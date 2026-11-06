@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
+
+<?php include 'navbar.php'; ?>
+
     <section class="navigation">
         <img src="logo.png" alt="Logo">
         <div class="navtxt">
@@ -15,7 +18,7 @@
             <div class="nav-sub">Pitogo, Quezon</div>
         </div>
             <ul class="nav-bar">
-                <li><a href="#Home" class="nav-link">Home</a></li>
+                <li><a href="index.php" class="nav-link">Home</a></li>
                 <li class="dropdown">
                     <a href="#" class="nav-link">About Us <i class="fa-solid fa-chevron-down"></i></a>
                     <div class="dropdown-content">
@@ -24,8 +27,8 @@
                     </div>
                 </li>
                 <li><a href="#Services" class="nav-link">Services</a></li>
-                <li><a href="#Announcement" class="nav-link">Announcement</a></li>
-                <li><a href="#Official" class="nav-link">Official</a></li>
+                <li><a href="announcement.php" class="nav-link">Announcement</a></li>
+                <li><a href="official.php" class="nav-link">Official</a></li>
                 <li class="dropdown">
                     <a href="#" class="nav-link">Inquiries <i class="fa-solid fa-chevron-down"></i></a>
                     <div class="dropdown-content">
@@ -57,46 +60,19 @@
     <section id="Announcement">
         <div class="announcement">
             <h2> Latest Announcements</h2>
+            <i class="fa-solid fa-bullhorn custom-icon33"></i>
             <p>Stay updated with the latest news and announcements from Barangay Pag-asa.</p>
         </div>
 
         <div class="button-for-announcement">
-            <button class="btn3">
-                <a href="#Announcements2">View Announcements</a>
+            <button class="btn6">
+                <a class="btntxt" href= "announcement.php">View Announcements</a>
             </button>
-            <button class="btn4">
-                <a href="#Gallery">Photo Gallery</a>
-            </button>
-            <button class="btn5">
-                <a href="#Calendar">Calendar of Activities</a>
-        </button>
-        </div>
-
-         <div id="Announcements2">
-            <h3>Latest Announcement</h3>
-            <div class="announcement-content">
-                <p>Important updates and information for our community</p>
-            </div>
-        </div>
-
-         <div id="Gallery">
-            <h3>Photo Gallery</h3>
-            <div class="gallery-content">
-                <p>Browse photos of community events, programs, and activities.</p>
-            </div>
-        </div>
-
-        <div id="Calendar">
-            <h3>Calendar of Activities</h3>
-            <div class="calendar-content">
-                <p>Check out our upcoming events and activities in the community.</p>
-            </div>
-        </div>
-    </section>
-
+</div>
+</section>
     <section id="Services">
             <div class="services">
-                <h2>Our Services</h2>
+                <h2>Comprehensive Barangay Services</h2>
                 <p>We offer a range of services to support our community, including:</p>
                 <div class="service-list">
                     <div class="service-item"><p>Community Announcements</p>
@@ -133,126 +109,6 @@
     </section>
 
 
-
-    <section id="Official">
-        <div class="official-info">
-            <h2><center>Barangay Officials</center></h2>
-            <p><center>Meet the dedicated individuals who serve our community.</center></p>
-
-            <h2><center>Punong Barangay</center></h2>
-            <div class = "kapitan-card">
-                <h3>Hon. Wilson A. Argulla</h3>
-                <p>Punong Barangay</p>
-            </div>
-
-            <h2><center>Barangay Kagawad</center></h2>
-
-            <div class = "kagawad-card">
-
-                <div class="kagawad-content">
-                    <h3>Hon. Ronald Allan A. Musa</h3>
-                    <p>Commision on Appropriations</p>
-                </div>
-
-                <div class="kagawad-content">
-                    <h3>Hon. Joey B. Lejana</h3>
-                    <p>Commision on Peace &  Order and BADAC (Barangay Anti-Drug Abuse Council)</p>
-                </div>
-
-                <div class="kagawad-content">
-                    <h3>Hon. Aldwin F. Sampayo</h3>
-                    <p>Commision on Education/Culture/Human Rights</p>
-                </div>
-
-                <div class="kagawad-content">
-                    <h3>Hon. Russel M. Rioveros</h3>
-                    <p>Commision on BDRRM (Barangay Disaster Risk Reduction and Management) and Solid Waste</p>
-                </div>
-
-                <div class="kagawad-content">
-                    <h3>Hon. Eloisa M. Formarejo</h3>
-                    <p>Commision on Women and Family</p>
-                </div>
-
-                <div class="kagawad-content">
-                    <h3>Hon. Joseph G. Escalona</h3>
-                    <p>Commision on Public Works and Infrastructure Development</p>
-                </div>
-
-                <div class="kagawad-content">
-                    <h3>Hon. Fernando D. Abrencillo Jr.</h3>
-                    <p>Commision on Agriculture</p>
-
-                </div>
-            </div>
-
-            <h2><center>Sangguniang Kabataan</center></h2>
-            <div class = "sk-card">
-                <h3>Hon. SK Elgene S. De Tobio</h3>
-                <p>Commision on Youth Sports and Development</p>
-            </div>
-
-            <h3><center>Bids and Awards Committee (BAC)</center></h3>
-            <div class = "bac-container">
-                <div class ="bac-card">
-                    <h3>Hon. Aldwin F. Sampayo</h3>
-                    <p>Vice BAC</p>
-                </div>
-
-                <div class ="bac-card">
-                    <h3>Hon. Ronald Allan A. Musa</h3>
-                    <p>BAC Chairman</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="Inquiries">
-        <div class="inquiries">
-            <h2>Inquiries</h2>
-            <p>If you have any questions or need assistance, please reach out to us.</p>
-        </div>
-
-        <div class ="inquiry-form">
-            <h4>Application Information</h4><hr>
-            <form action="#" method="post">
-                <label for="fullname">Full Name:</label>
-                <input type="text" id="fullname" name="fullname" placeholder="Juan Dela Cruz" required>
-
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="juan@gmail.com" required>
-
-                <label for="number">Contact Number:</label>
-                <input type="tel" id="number" name="number" placeholder="09123456789" required>
-
-                <h4>Business Information</h4><hr>
-                <label for="businessname">Business Name:</label>
-                <input type="text" id="businessname" name="businessname" placeholder="Juan's Sari-Sari Store" required>
-
-                <select id="businesscategory" name="businesscategory" required>
-                    <option value="">Select Business Category</option>
-                    <option value="Retail">Retail</option>
-                    <option value="Food and Beverage">Food and Beverage</option>
-                    <option value="Services">Services</option>
-                    <option value="Manufacturing">Manufacturing</option>
-                    <option value="Other">Other</option>
-                </select>
-                <input type="text" id="othercategory" name="othercategory" placeholder="Please specify if 'Other'" style="display:none;">
-
-                <label for="businessaddress">Business Address:</label>
-                <input type="text" id="businessaddress" name="businessaddress" required>
-
-
-                <h4>Request Details</h4><hr>
-                <label for="purpose-request">Purpose of Request</label>
-                <input type="text" cols="6" row="20">
-
-                <button type="submit">Submit</button>
-            </form>
-    </section>
-</body>
-</html>
-
  <section id="AboutUs">
         <div class="about">
             <h2><center>About Us</center></h2>
@@ -274,3 +130,5 @@
             </div>
         </div>
     </section>
+</body>
+</html>

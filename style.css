@@ -113,7 +113,8 @@ body {
     display: block;
 }
 
-.btn1, .btn2 {
+
+.btn1, .btn2, .btn3, .btn4, .btn5 {
     background-color: transparent; 
     color: white;
     padding: 15px 20px;
@@ -136,7 +137,7 @@ body {
     font-size: 20px; 
 }
 
-.btn1:hover, .btn2:hover {
+.btn1:hover, .btn2:hover, .btn3:hover, .btn4:hover, .btn5:hover {
     background-color: #830000; 
     border-color: #830000;    
 }
@@ -144,6 +145,7 @@ body {
 .button-container {
     justify-content: center;
     flex-direction: row;
+    margin-top: -120px;
 }
 
 #Home {
@@ -155,6 +157,9 @@ body {
     align-items: center;
     justify-content: center;
     background-attachment: fixed;
+    position: relative;
+    box-sizing: border-box;
+    padding-bottom: 300px;
 }
 
 .home {
@@ -199,13 +204,22 @@ body {
     padding: 50px 20px;
     text-align: center;
     background-color: #f4f4f4;
-    height: 100vh;
+    height: 80vh;
+    width: 100%;
+}
+
+#Announcement2 {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #f4f4f4;
+    height: 100vh !important;
     width: 100%;
 }
 
 #Announcement h2 {
     font-size: 50px;
     margin-bottom: 20px;
+    padding-top: 50px;
 }
 #Announcement h3 {
     font-size: 30px;
@@ -217,6 +231,7 @@ body {
     color: #555;
     max-width: 800px;
     margin: 0 auto;
+    padding-top: 30px;
 }
 #Announcements2{
     padding: 30px;
@@ -234,26 +249,11 @@ body {
 #Calendar{
     padding: 30px;
 }
-.btn3, .btn4, .btn5{
-    background-color: #b30606 ; 
-    color: white;
-    padding: 20px 20px;
-    margin: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 10px;
-    border: 2px solid rgb(111, 107, 107); 
-    transition: background-color 0.3s ease, border-color 0.3s ease; 
-    margin-top: 55px;
-    box-shadow: 0 4px 10px rgba(62, 39, 35, 0.20);
-}
 
 .btn3 a, .btn4 a, .btn5 a {
     color: white;
     text-decoration: none;
-}
-.btn3:hover, .btn4:hover, .btn5:hover {
-    background-color: #ac5353; 
+    font-weight: bold;
 }
 
 #Services {
@@ -263,8 +263,8 @@ body {
 .services {
     padding: 50px 20px;
     text-align: center;
-    background-color: #f4f4f4;
-    height: 100vh;
+    background-color: white;
+    height: 90vh;
 }
 
 .services h2 {
@@ -340,6 +340,10 @@ body {
     background-color: #ac5353;     
 }
 
+.button-announcement {
+    padding-top: 200px;
+}
+
 .custom-icon1 {
     font-size: 100px;
     color: #8B1E2D;      
@@ -366,6 +370,11 @@ body {
     margin-top: 50px;
     color: #457B9D;      
     margin-left: 12px;
+}
+
+.custom-icon33 {
+    font-size: 100px;
+    color: #630d0d;
 }
 
 #AboutUs {

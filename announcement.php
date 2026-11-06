@@ -1,46 +1,76 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Capstone</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+<?php include 'navbar.php'; ?>
+
+<section class="navigation">
+        <img src="logo.png" alt="Logo">
+        <div class="navtxt">
+            <div class="nav-title">Barangay Pag-asa</div>
+            <div class="nav-sub">Pitogo, Quezon</div>
+        </div>
+            <ul class="nav-bar">
+                <li><a href="index.php" class="nav-link">Home</a></li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link">About Us <i class="fa-solid fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#AboutUs">About Barangay</a>
+                        <a href="#FAQs">FAQs</a>
+                    </div>
+                </li>
+                <li><a href="#Services" class="nav-link">Services</a></li>
+                <li><a href="announcement.php" class="nav-link">Announcement</a></li>
+                <li><a href="#Official" class="nav-link">Official</a></li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link">Inquiries <i class="fa-solid fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#ContactUs">Business Clearance</a>
+                        <a href="#Feedback">Contact Us</a>
+                    </div>
+                </li>
+            </ul>
+    </section>
+ 
  <section id="Home">
         <div class="home">
             <img src="pitogobg.jpg" alt="BarangayBg" class="bg-image">
-            <h1>Barangay Pag-asa</h1>
-            <p>Your trusted community hub for information and services.</p>
-        </div>
-        <div class="button-container">
-            <button class="btn1">
-                <i class="fa-solid fa-screwdriver-wrench icon22"></i>
-                <a class = "btntxt" href="#Services">Explore Services</a>
-            </button>
-            <button class="btn2">
-                <i class="fa-solid fa-door-open icon22"></i>
-                <a class = "btntxt" href="#Portal">Resident Portal</a>
-            </button>
-        </div>
-    </section>
-
-    <section id="Announcement">
-        <div class="announcement">
-            <h2> Latest Announcements</h2>
+            <h1>Announcements</h1>
             <p>Stay updated with the latest news and announcements from Barangay Pag-asa.</p>
         </div>
-
-        <div class="button-for-announcement">
+     <div class="button-container">
             <button class="btn3">
-                <a href="#Announcements2">View Announcements</a>
+                <i class="fa-solid fa-bullhorn"></i>
+                <a href="#Announcements2">Latest Announcements</a>
             </button>
             <button class="btn4">
+                <i class="fa-solid fa-images"></i>
                 <a href="#Gallery">Photo Gallery</a>
             </button>
             <button class="btn5">
+                <i class="fa-solid fa-calendar"></i>
                 <a href="#Calendar">Calendar of Activities</a>
         </button>
         </div>
+    </section>
 
-         <div id="Announcements2">
-            <h3>Latest Announcement</h3>
-            <div class="announcement-content">
-                <p>Important updates and information for our community</p>
-            </div>
+    <section id="Announcement2">
+        <div class="announcement2">
+            <h2> Latest Announcements</h2>
+            <p>Stay updated with the latest news and announcements from Barangay Pag-asa.</p>
         </div>
-
+        <div class="button-announcement">
+            <button class="btn6">
+                <a class="btntxt" href= "announcement.php">View All Announcements</a>
+            </button>
+</div>
          <div id="Gallery">
             <h3>Photo Gallery</h3>
             <div class="gallery-content">
@@ -55,3 +85,5 @@
             </div>
         </div>
     </section>
+</body>
+</header>
