@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mini Capstone</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
 
-<?php include 'navbar.php'; ?>
+<?php 
+    //include __DIR__ . '/navbar.php'; 
+?>
 
 <section class="navigation">
         <img src="logo.png" alt="Logo">
@@ -19,23 +24,23 @@
         </div>
             <ul class="nav-bar">
                 <li><a href="index.php" class="nav-link">Home</a></li>
-                <li class="dropdown">
-                    <a href="#" class="nav-link">About Us <i class="fa-solid fa-chevron-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="#AboutUs">About Barangay</a>
-                        <a href="#FAQs">FAQs</a>
-                    </div>
-                </li>
-                <li><a href="#Services" class="nav-link">Services</a></li>
-                <li><a href="announcement.php" class="nav-link">Announcement</a></li>
-                <li><a href="#Official" class="nav-link">Official</a></li>
-                <li class="dropdown">
-                    <a href="#" class="nav-link">Inquiries <i class="fa-solid fa-chevron-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="#ContactUs">Business Clearance</a>
-                        <a href="#Feedback">Contact Us</a>
-                    </div>
-                </li>
+    <li class="dropdown">
+        <a href="#" class="nav-link">About Us <i class="fa-solid fa-chevron-down"></i></a>
+        <div class="dropdown-content">
+            <a href="AboutUs.php#AboutUs">About Barangay</a>
+            <a href="AboutUs.php#FAQs">FAQs</a>
+        </div>
+    </li>
+    <li><a href="index.php#services" class="nav-link">Services</a></li>
+    <li><a href="announcement.php" class="nav-link">Announcement</a></li>
+    <li><a href="official.php" class="nav-link">Official</a></li>
+    <li class="dropdown">
+        <a href="#" class="nav-link">Inquiries <i class="fa-solid fa-chevron-down"></i></a>
+        <div class="dropdown-content">
+            <a href="index.php#ContactUs">Business Clearance</a>
+            <a href="index.php#Feedback">Contact Us</a>
+        </div>
+    </li>
             </ul>
     </section>
  
@@ -61,52 +66,98 @@
         </div>
     </section>
 
-    <section id="Announcement2">
-        <div class="announcement2">
-            <h2> Latest Announcements</h2>
-            <p>Stay updated with the latest news and announcements from Barangay Pag-asa.</p>
-        </div>
-        <div class="button-announcement">
-            <button class="btn6">
-                <a class="btntxt" href= "announcement.php">View All Announcements</a>
-            </button>
-</div>
-         <div id="Gallery">
-            <h3>Photo Gallery</h3>
-            <div class="gallery-content">
-                <p>Browse photos of community events, programs, and activities.</p>
-            </div>
-        </div>
-
-        <div id="Calendar">
-            <h3>Calendar of Activities</h3>
-            <div class="calendar-content">
-                <p>Check out our upcoming events and activities in the community.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="AboutUs">
-        <div class="about">
-            <h2><center>About Us</center></h2>
-            <h3><center>Welcome to Barangay Pag-asa! We are dedicated to serving our community with integrity and excellence.</center></h3>
-
-            <div class="about-content">
-
-                <div class="mission">
-                    <h2><center>Our Mission (Misyon)</center></h2>
-                    <p>"Magbigay ng dekalidad na serbisyong pampubliko sa pamamagiatn ng makabuluhang mga programa at proyekto na nagtataguyod ng pagkakaisa, kaunlaran, at pangangalaga sa kalikasan, habang sinisiguro ang kaligtasan at kapakanan ng bawat mamamayan ng barangay"</p>
-                    <p class = "highlight">To provide quality public service through meaningful programs and projects that promote unity, development, and environmental protection, while ensuring the safety and welfare of every citizen in the barangay.</p>
+        <section id="Announcement2">
+            <div class ="Latest">
+                <div class="announcement2">
+                    <h1> Latest Announcements</h1>
+                    <p>Stay updated with the latest news and announcements from Barangay Pag-asa.</p>
                 </div>
 
-                <div class="vision">
-                    <h2><center>Our Vision (Paniniwala)</center></h2>
-                    <p>"Isang maunlad, ligtas at mapayapang barangay na may aktibong mamamayan, maayos na kapaligiran, at sapat na serbisyong panlipunan para sa lahat"</p>
-                    <p class = "highlight">A prosperous, safe, and peaceful barangay with active citizens, a well-maintained environment, and sufficient social services for all.</p>
+                <div class="announcements-filler">
+                    <i class="fa-solid fa-inbox inboxicon"></i>
+                    <p>No announcements available at this time.</p>
                 </div>
-
+                <div class="button-announcement">
+                    <button class="btn6" onclick="openGalleryModal()">
+                        <span class="btntxt">View All Announcements</span>
+                    </button>
+                </div>
             </div>
+            <div id="announcementModal" class="modal-overlay1">
+                <div class="modal-card">
+                
+                    <div class="modal-header">
+                        <div class="header-title">
+                        <i class="fa-solid fa-bullhorn"></i>
+                        <span>All Announcements</span>
+                        </div>
+                        <button class="close-btn" onclick="closeGalleryModal()">&times;</button>
+                    </div>
+
+                    <div class="modal-filter-bar">
+                        <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" placeholder="Search announcements...">
+                        </div>
+                        <select class="category-select">
+                        <option value="all">All Categories</option>
+                        </select>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="empty-state">
+                        <i class="fa-solid fa-inbox modal-inbox-icon"></i>
+                        <p>No announcements available.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+
+
+        <div id="Gallery">
+            <h1>Photo Gallery</h1>
+                <div class="gallery-content">
+                    <p>Browse photos of community events, programs, and activities.</p>
+                </div>
+                <button class="btn6 btntxt" data-bs-toggle="modal" data-bs-target="#galleryModal">
+                    View Photo
+                </button>
         </div>
-    </section>
+        <div id="galleryModal" class="modal-overlay">
+
+            <div id="Gallery">
+                <div class = "gallerypic">
+                    <div class="gallerypic-card">
+                        <img src="photogallery.jpg" class="img-fluid rounded shadow-sm" alt="Event 2">
+                    </div>
+
+                    <div class="gallerypic-card">
+                        <img src="photogallery2.jpg" class="img-fluid rounded shadow-sm" alt="Event 2">
+                    </div>
+
+                    <div class="gallerypic-card">
+                        <img src="photogallery3.jpg" class="img-fluid rounded shadow-sm" alt="Event 2">
+                    </div>
+
+                    <div class="gallerypic-card">
+                        <img src="photogallery4.jpg" class="img-fluid rounded shadow-sm" alt="Event 2">
+                    </div>
+
+                    <div class="gallerypic-card">
+                        <img src="photogallery5.jpg" class="img-fluid rounded shadow-sm" alt="Event 2">
+                    </div>
+
+                    <div class="gallerypic-card">
+                        <img src="photogallery6.jpg" class="img-fluid rounded shadow-sm" alt="Event 2">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
 </body>
-</header>
+</html>

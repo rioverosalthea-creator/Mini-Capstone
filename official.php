@@ -19,23 +19,23 @@
         </div>
             <ul class="nav-bar">
                 <li><a href="index.php" class="nav-link">Home</a></li>
-                <li class="dropdown">
-                    <a href="#" class="nav-link">About Us <i class="fa-solid fa-chevron-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="#AboutUs">About Barangay</a>
-                        <a href="#FAQs">FAQs</a>
-                    </div>
-                </li>
-                <li><a href="#Services" class="nav-link">Services</a></li>
-                <li><a href="announcement.php" class="nav-link">Announcement</a></li>
-                <li><a href="official.php" class="nav-link">Official</a></li>
-                <li class="dropdown">
-                    <a href="#" class="nav-link">Inquiries <i class="fa-solid fa-chevron-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="#ContactUs">Business Clearance</a>
-                        <a href="#Feedback">Contact Us</a>
-                    </div>
-                </li>
+    <li class="dropdown">
+        <a href="#" class="nav-link">About Us <i class="fa-solid fa-chevron-down"></i></a>
+        <div class="dropdown-content">
+            <a href="AboutUs.php#AboutUs">About Barangay</a>
+            <a href="AboutUs.php#FAQs">FAQs</a>
+        </div>
+    </li>
+    <li><a href="index.php#services" class="nav-link">Services</a></li>
+    <li><a href="announcement.php" class="nav-link">Announcement</a></li>
+    <li><a href="official.php" class="nav-link">Official</a></li>
+    <li class="dropdown">
+        <a href="#" class="nav-link">Inquiries <i class="fa-solid fa-chevron-down"></i></a>
+        <div class="dropdown-content">
+            <a href="index.php#ContactUs">Business Clearance</a>
+            <a href="index.php#Feedback">Contact Us</a>
+        </div>
+    </li>
             </ul>
     </section>
     
@@ -48,7 +48,7 @@
         <div class="button-container">
             <button class="btn1">
                 <i class="fa-solid fa-screwdriver-wrench icon22"></i>
-                <a class = "btntxt" href="#Services">Explore Services</a>
+                <a class ="btntxt" href="#services">Explore Services</a>
             </button>
             <button class="btn2">
                 <i class="fa-solid fa-door-open icon22"></i>
