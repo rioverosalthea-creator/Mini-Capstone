@@ -43,8 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ANNOUNCEMENT MODAL
-
 const modal = document.getElementById("announcementModal");
 
 window.openAnnouncementModal = function() {
@@ -60,7 +58,6 @@ window.closeAnnouncementModal = function() {
 };
 
 
-// EMERGENCY HOTLINE MODALS
 
 window.openModal = function(modalId) {
     const selectedModal = document.getElementById(modalId);
