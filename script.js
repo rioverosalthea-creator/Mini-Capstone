@@ -3,7 +3,7 @@ window.openPhotoGalleryModal = function() {
     if (modal) {
         modal.classList.add('active');
     } else {
-        console.error("Hindi makita ang element na may ID na 'uniqueGalleryModal'");
+        console.error("");
     }
 };
 
@@ -30,24 +30,6 @@ window.closeUgPreview = function() {
     }
 };
 
-window.addUgComment = function(event) {
-    event.preventDefault();
-    const input = document.getElementById('ugCommentInput');
-    const commentText = input ? input.value.trim() : "";
-    
-    if (commentText !== "") {
-        const commentsList = document.getElementById('ugCommentsList');
-        if (commentsList) {
-            const newComment = document.createElement('div');
-            newComment.className = 'ug-comment-item';
-            newComment.innerHTML = `<strong>You:</strong> ${commentText}`;
-            commentsList.appendChild(newComment);
-            input.value = "";
-            commentsList.scrollTop = commentsList.scrollHeight;
-        }
-    }
-};
-
 document.addEventListener("DOMContentLoaded", function () {
 
     const galleryModal = document.getElementById("galleryModal");
@@ -68,11 +50,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const announcementModal = document.getElementById("announcementModal");
 
-    window.openAnnouncementModal = function() {
+    window.openGalleryModal = function() {
         if (announcementModal) announcementModal.classList.add("active");
     };
 
-    window.closeAnnouncementModal = function() {
+    window.closeGalleryModal = function() {
         if (announcementModal) announcementModal.classList.remove("active");
     };
 
