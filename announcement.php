@@ -70,7 +70,7 @@
                 <p>No announcements available at this time.</p>
             </div>
             <div class="button-announcement">
-                <button class="btn6" onclick="">
+                <button class="btn6" onclick="openAnnouncementModal()">
                     <span class="btntxt">View All Announcements</span>
                 </button>
             </div>
