@@ -24,19 +24,11 @@
                     <a href="#" class="nav-link">About Us <i class="fa-solid fa-chevron-down"></i></a>
                     <div class="dropdown-content">
                         <a href="AboutUs.php">About Barangay</a>
-                        <a href="#FAQs">FAQs</a>
                     </div>
                 </li>
                 <li><a href="index.php#services" class="nav-link">Services</a></li>
                 <li><a href="announcement.php" class="nav-link">Announcement</a></li>
                 <li><a href="official.php" class="nav-link">Official</a></li>
-                <li class="dropdown">
-                    <a href="#" class="nav-link">Inquiries <i class="fa-solid fa-chevron-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="#ContactUs">Business Clearance</a>
-                        <a href="#Feedback">Contact Us</a>
-                    </div>
-                </li>
             </ul>
     </section>
 

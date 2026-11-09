@@ -30,12 +30,6 @@
     <li><a href="announcement.php" class="nav-link">Announcement</a></li>
     <li><a href="official.php" class="nav-link">Official</a></li>
     <li class="dropdown">
-        <a href="#" class="nav-link">Inquiries <i class="fa-solid fa-chevron-down"></i></a>
-        <div class="dropdown-content">
-            <a href="index.php#ContactUs">Business Clearance</a>
-            <a href="index.php#Feedback">Contact Us</a>
-        </div>
-    </li>
             </ul>
     </section>
     
