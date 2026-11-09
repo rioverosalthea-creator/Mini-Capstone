@@ -821,7 +821,7 @@ html, body {
   background-color: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 9999;
 }
 
 .modal-overlay1.active {
@@ -930,7 +930,9 @@ html, body {
   color: #cbd5e1;
 }
 
-.gallery-modal-overlay {
+/* Start ng CSS ng Gallery */
+
+.ug-custom-modal-overlay {
   display: none;
   position: fixed;
   top: 0;
@@ -940,25 +942,25 @@ html, body {
   background-color: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 9999;
 }
 
-.gallery-modal-overlay.active {
+.ug-custom-modal-overlay.active {
   display: flex;
 }
 
-.gallery-modal-card {
+.ug-custom-modal-card {
   background: #ffffff;
   width: 90%;
-  max-width: 750px;
+  max-width: 650px;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   font-family: Arial, sans-serif;
 }
 
-.gallery-modal-header {
-  background-color: #116828; 
+.ug-custom-modal-header {
+  background-color: #681111;
   color: #ffffff;
   padding: 16px 20px;
   display: flex;
@@ -966,7 +968,7 @@ html, body {
   align-items: center;
 }
 
-.gallery-header-title {
+.ug-custom-header-title {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -974,7 +976,7 @@ html, body {
   font-weight: bold;
 }
 
-.gallery-close-btn {
+.ug-custom-close-btn {
   background: none;
   border: none;
   color: #ffffff;
@@ -982,23 +984,35 @@ html, body {
   cursor: pointer;
 }
 
-.gallery-close-btn:hover {
+.ug-custom-close-btn:hover {
   opacity: 0.8;
 }
 
-.gallery-modal-body {
+.ug-custom-filter-bar {
+  padding: 16px 20px;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  gap: 12px;
+}
+
+.ug-custom-modal-body {
   padding: 30px 20px;
   max-height: 450px;
   overflow-y: auto;
 }
 
-.gallery-grid {
+.ug-custom-modal-body p {
+    font-style: italic;
+    color: gray;
+}
+
+.ug-grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   gap: 15px;
 }
 
-.gallery-item {
+.ug-item-card {
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid #e2e8f0;
@@ -1006,33 +1020,74 @@ html, body {
   aspect-ratio: 1 / 1;
 }
 
-.gallery-item img {
+.ug-item-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  cursor: pointer;
   transition: transform 0.2s ease;
 }
 
-.gallery-item img:hover {
+.ug-item-card img:hover {
   transform: scale(1.05);
 }
-
-.gallery-empty-state {
-  display: flex;
-  flex-direction: column;
+.ug-preview-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Mas madilim na background para naka-focus sa litrato */
+  justify-content: center;
   align-items: center;
-  gap: 12px;
-  color: #64748b;
-  font-size: 15px;
-  padding: 40px 0;
+  z-index: 10000;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.gallery-icon-large {
-  font-size: 40px;
-  color: #cbd5e1;
+.ug-preview-overlay.active {
+  display: flex !important;
 }
 
+.ug-preview-card {
+  position: relative;
+  background: transparent; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: visible;
+}
 
+.ug-preview-img-box img {
+  max-width: 85vw;
+  max-height: 85vh;
+  object-fit: contain; 
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+}
+
+.ug-preview-close-btn {
+  position: absolute;
+  padding-bottom: 5px;
+  top: -40px;
+  right: 0;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 32px;
+  cursor: pointer;
+  z-index: 99999;
+  border-radius: 5px;
+}
+
+.ug-preview-close-btn:hover {
+  opacity: 0.7;
+  border-radius: 5px;
+}
+
+/* End ng CSS ng Gallery */
 
 .form-layout {
     max-width: 800px;
