@@ -12,9 +12,7 @@
 </head>
 <body>
 
-<?php 
-    //include __DIR__ . '/navbar.php'; 
-?>
+<?php //include 'navbar.php'; ?>
 
 <section class="navigation">
         <img src="logo.png" alt="Logo">
@@ -35,12 +33,6 @@
     <li><a href="announcement.php" class="nav-link">Announcement</a></li>
     <li><a href="official.php" class="nav-link">Official</a></li>
     <li class="dropdown">
-        <a href="#" class="nav-link">Inquiries <i class="fa-solid fa-chevron-down"></i></a>
-        <div class="dropdown-content">
-            <a href="index.php#ContactUs">Business Clearance</a>
-            <a href="index.php#Feedback">Contact Us</a>
-        </div>
-    </li>
             </ul>
     </section>
  
@@ -124,38 +116,28 @@
                 <button class="btn6 btntxt" data-bs-toggle="modal" data-bs-target="#galleryModal">
                     View Photo
                 </button>
-        </div>
-        <div id="galleryModal" class="modal-overlay">
+                <div id="galleryModal" class="gallery-modal-overlay">
+                    <div class="gallery-modal-card">
+                        <div class="gallery-modal-header">
+                            <div class="gallery-header-title">
+                                <i class="fa-solid fa-images"></i>
+                                <span>Barangay Photo Gallery</span>
+                            </div>
+                            <button class="gallery-close-btn" onclick="closeGalleryModal()">&times;</button>
+                        </div>
+                        <div class="gallery-modal-body">
+                                <div class="gallery-item">
+                                    <img src="pitogobg.jpg" alt="Gallery Image 1">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="logo.png" alt="Gallery Image 2">
+                                </div>
+                            </div>
+                        </div>
 
-            <div id="Gallery">
-                <div class = "gallerypic">
-                    <div class="gallerypic-card">
-                        <img src="photogallery.jpg" class="img-fluid rounded shadow-sm" alt="Event 2">
-                    </div>
-
-                    <div class="gallerypic-card">
-                        <img src="photogallery2.jpg" class="img-fluid rounded shadow-sm" alt="Event 2">
-                    </div>
-
-                    <div class="gallerypic-card">
-                        <img src="photogallery3.jpg" class="img-fluid rounded shadow-sm" alt="Event 2">
-                    </div>
-
-                    <div class="gallerypic-card">
-                        <img src="photogallery4.jpg" class="img-fluid rounded shadow-sm" alt="Event 2">
-                    </div>
-
-                    <div class="gallerypic-card">
-                        <img src="photogallery5.jpg" class="img-fluid rounded shadow-sm" alt="Event 2">
-                    </div>
-
-                    <div class="gallerypic-card">
-                        <img src="photogallery6.jpg" class="img-fluid rounded shadow-sm" alt="Event 2">
-                    </div>
-                </div>
             </div>
-
         </div>
+    </div>
 </section>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="script.js"></script>

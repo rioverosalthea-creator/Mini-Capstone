@@ -23,19 +23,11 @@
         <a href="#" class="nav-link">About Us <i class="fa-solid fa-chevron-down"></i></a>
         <div class="dropdown-content">
             <a href="AboutUs.php#AboutUs">About Barangay</a>
-            <a href="AboutUs.php#FAQs">FAQs</a>
         </div>
     </li>
     <li><a href="index.php#services" class="nav-link">Services</a></li>
     <li><a href="announcement.php" class="nav-link">Announcement</a></li>
     <li><a href="official.php" class="nav-link">Official</a></li>
-    <li class="dropdown">
-        <a href="#" class="nav-link">Inquiries <i class="fa-solid fa-chevron-down"></i></a>
-        <div class="dropdown-content">
-            <a href="index.php#ContactUs">Business Clearance</a>
-            <a href="index.php#Feedback">Contact Us</a>
-        </div>
-        </ul>
     </section>
     
     <section id="Home">
@@ -74,32 +66,32 @@
                 <h2>Comprehensive Barangay Services</h2>
                 <p>We offer a range of services to support our community, including:</p>
                 <div class="service-list">
-                    <div class="service-item"><p>Community Announcements</p>
+                    <div class="service-item"><p>Clearances</p>
                         <i class="fa-solid fa-calendar custom-icon1"></i>
-                        <h5>Stay informed about the latest news and events in our community.</h5>
+                        <h5>Get Barangay Clearances for various purposes with digital processing.</h5>
                         <button class="btn6">
-                            <a class = "btntxt"href="#Announcement">View Announcements</a>
+                            <a class = "btntxt" href="BarangayClearance.php">Get Clearances</a>
                         </button>
                     </div>
                     <div class="service-item"><p>Complaint Resolution</p>
                         <i class="fa-solid fa-triangle-exclamation custom-icon2"></i>
                         <h5>Get your complaints resolved efficiently and effectively.</h5>
                         <button class="btn6">
-                            <a class = "btntxt"href="#Complaint">View Complaints</a>
+                            <a class = "btntxt"href="Complaint.php">View Complaints</a>
                         </button>   
                     </div>
-                    <div class="service-item"><p>Official Documentation</p>
+                    <div class="service-item"><p>Certificates</p>
                         <i class="fa-solid fa-file-lines custom-icon3"></i>
-                        <h5>Access and submit official documents for various services.</h5>
+                        <h5>Request official barangay certificates.</h5>
                         <button class="btn6">
-                            <a class = "btntxt"href="#Documentation">View Documentation</a>
+                            <a class = "btntxt" href="Certificates.php">Request Certificates</a>
                         </button>
                     </div>
-                    <div class="service-item"><p>Inquiries and Assistance</p>
+                    <div class="service-item"><p>Request</p>
                         <i class="fa-solid fa-file-circle-question custom-icon4"></i>
-                        <h5>Get the information and support you need from our team.</h5>
+                        <h5>Request barangay services such as waste collection, and streetlight repairs.</h5>
                         <button class="btn6">
-                            <a class = "btntxt"href="#Inquiries">View Inquiries</a>
+                            <a class = "btntxt"href="Request.php">Request Services</a>
                         </button>
                     </div>
                 </div>
