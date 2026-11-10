@@ -9,7 +9,18 @@
 </head>
 <body>
 
-<?php include 'navbar.php'; ?>
+    <?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+include 'navbar.php';
+?>
+
+    
 
     <section class="navigation">
             <img src="logo.png" alt="Logo">
@@ -23,7 +34,7 @@
         <li><a href="index.php#services" class="nav-link">Services</a></li>
         <li><a href="announcement.php" class="nav-link">Announcement</a></li>
         <li><a href="official.php" class="nav-link">Official</a></li>
-
+        
         <div class="navbar-clock">
             <div id="currentTime"></div>
             <div id="currentDate"></div>
@@ -36,10 +47,10 @@
             <i class="fas fa-chevron-down"></i>
         </button>
         <div class="dropdown-menu" id="profileMenu">
-            <a href="profile.php">My Profile</a>
-            <a href="settings.php">Account Settings</a>
+            <a href="Profile.php">My Profile</a>
+            <a href="AccountSetting.php">Account Settings</a>
             <hr>
-            <a href="logout.php" class="logout">Logout</a>
+            <a href="login.php" class="logout">Logout</a>
         </div>
    </section>
     

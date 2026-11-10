@@ -1,7 +1,7 @@
 <?php
-$conn= mysqli("localhost", "root", "", "barangay_db");
+$conn = new mysqli("localhost", "root", "", "barangay_db");
 
-if (!$conn) {
-    die("Connection failed: ".mysqli_connect_error());
+if ($conn->connect_error) {
+    die("Database connection failed: " . $conn->connect_error);
 }
 ?>

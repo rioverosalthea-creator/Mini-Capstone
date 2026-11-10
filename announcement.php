@@ -39,8 +39,8 @@
                 <i class="fas fa-chevron-down"></i>
             </button>
             <div class="dropdown-menu" id="profileMenu">
-                <a href="profile.php">My Profile</a>
-                <a href="settings.php">Account Settings</a>
+                <a href="Profile.php">My Profile</a>
+                <a href="AccountSetting.php">Account Settings</a>
                 <hr>
                 <a href="logout.php" class="logout">Logout</a>
             </div>
@@ -56,7 +56,7 @@
      <div class="button-container">
             <button class="btn3">
                 <i class="fa-solid fa-bullhorn"></i>
-                <a href="#Announcements2">Latest Announcements</a>
+                <a href="#Announcement2">Latest Announcements</a>
             </button>
             <button class="btn4">
                 <i class="fa-solid fa-images"></i>

@@ -36,8 +36,8 @@
             <i class="fas fa-chevron-down"></i>
         </button>
         <div class="dropdown-menu" id="profileMenu">
-            <a href="profile.php">My Profile</a>
-            <a href="settings.php">Account Settings</a>
+            <a href="Profile.php">My Profile</a>
+            <a href="AccountSetting.php">Account Settings</a>
             <hr>
             <a href="logout.php" class="logout">Logout</a>
         </div>
