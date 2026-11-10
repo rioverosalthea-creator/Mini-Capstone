@@ -62,6 +62,7 @@
         <div class ="Latest">
             <div class="announcement2">
                 <h1> Latest Announcements</h1>
+                <div class="heading-line"></div>
                 <p>Stay updated with the latest news and announcements from Barangay Pag-asa.</p>
             </div>
 
@@ -110,6 +111,7 @@
             <div class="ug-latest-container">
                 <div class="ug-header-content">
                     <h1>Photo Gallery</h1>
+                    <div class="heading-line"></div>
                     <p>Browse photos of community events, programs, and activities.</p>
                 </div>
                 <div class="ug-button-wrap">
@@ -131,7 +133,7 @@
                     </div>
 
                     <div class="ug-custom-modal-body">
-                        <p>(Click to view full image)</p>
+                        <p>(Click to view full photo)</p>
                         <div class="ug-grid-container">
                             <div class="ug-item-card">
                                 <img src="pitogobg.jpg" alt="Gallery Image 1" onclick="previewUgImage(this)">
@@ -172,6 +174,86 @@
         </div>
     </section>
 </section>
+
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-about">
+            <div class="footer-brand">
+                <img src="logo.png" alt="Barangay Logo">
+
+                <div>
+                    <h3>Barangay Pag-asa</h3>
+                    <p>Pitogo, Quezon</p>
+                </div>
+            </div>
+
+            <p class="footer-description">
+                Serving our community with accessible and reliable
+                public services.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+
+            <a href="#home">› Home</a>
+            <a href="AboutUs.php">› About Us</a>
+            <a href="announcement.php">› Announcements</a>
+            <a href="official.php">› Officials</a>
+        </div>
+
+    </div>
+
+    <div class="footer-contact">
+
+        <div class="contact-item">
+            <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+
+            <div>
+                <h4>Location</h4>
+                <p>Barangay Pag-asa, Pitogo, Quezon</p>
+            </div>
+        </div>
+
+        <div class="contact-item">
+            <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+            </div>
+
+            <div>
+                <h4>Hotline</h4>
+                <p>0981-488-1827</p>
+            </div>
+        </div>
+
+        <div class="contact-item">
+            <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+            </div>
+
+            <div>
+                <h4>Email</h4>
+                <a href="mailto: lgu.pitogoquezon@yahoo.com"> lgu.pitogoquezon@yahoo.com</a></p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        <p>© 2026 Barangay Pag-asa. All rights reserved.</p>
+
+        <div class="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Disclaimer</a>
+        </div>
+    </div>
+</footer>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="script.js"></script>
 </body>
