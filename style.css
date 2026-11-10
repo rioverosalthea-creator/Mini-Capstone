@@ -90,6 +90,21 @@ html, body {
     margin-left: 10px;
 }
 
+.nav-title2 {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+    white-space: nowrap;
+}
+
+.nav-sub2 {
+    color: white;
+    font-size: 13px;
+    margin-left: 10px;
+    padding-top: 1px;
+}
+
 .nav-bar > li.dropdown > a {
     cursor: default; 
     pointer-events: none; 
@@ -752,6 +767,10 @@ html, body {
 .kapitan-card h3, .kagawad-content h3, .sk-card h3, .bac-card h3 {
     color:#4d0707;
     font-size: 20px;
+}
+
+.official-info h2 {
+    padding: 10px;
 }
 
 .kagawad-card {

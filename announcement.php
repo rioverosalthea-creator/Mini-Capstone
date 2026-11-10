@@ -17,8 +17,8 @@
     <section class="navigation">
         <img src="logo.png" alt="Logo">
         <div class="navtxt">
-            <div class="nav-title">Barangay Pag-asa</div>
-            <div class="nav-sub">Pitogo, Quezon</div>
+            <div class="nav-title2">Barangay Pag-asa</div>
+            <div class="nav-sub2">Pitogo, Quezon</div>
         </div>
         <ul class="nav-bar">
         <li><a href="index.php" class="nav-link">Home</a></li>
