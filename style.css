@@ -589,8 +589,8 @@ html, body {
     box-shadow: 0 4px 10px rgba(62, 39, 35, 0.20); 
     flex-shrink: 0; 
     border: 1px solid #711818;
-    height: 500px;
-    width: 50%;
+    height: 450px;
+    width: 30%;
     font-weight: bold;
 }
 

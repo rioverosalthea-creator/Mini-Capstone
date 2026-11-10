@@ -52,14 +52,6 @@
             <p>Your trusted community hub for information and services.</p>
         </div>
         <div class="button-container">
-            <button class="btn1">
-                <i class="fa-solid fa-screwdriver-wrench icon22"></i>
-                <a class ="btntxt" href="#services">Explore Services</a>
-            </button>
-            <button class="btn2">
-                <i class="fa-solid fa-door-open icon22"></i>
-                <a class = "btntxt" href="#Portal">Resident Portal</a>
-            </button>
         </div>
     </section>
 

@@ -56,10 +56,6 @@
                 <i class="fa-solid fa-screwdriver-wrench icon22"></i>
                 <a class = "btntxt" href="#services">Explore Services</a>
             </button>
-            <button class="btn2">
-                <i class="fa-solid fa-door-open icon22"></i>
-                <a class = "btntxt" href="#Portal">Resident Portal</a>
-            </button>
         </div>
     </section>
 
