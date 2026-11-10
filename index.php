@@ -12,38 +12,36 @@
 <?php include 'navbar.php'; ?>
 
     <section class="navigation">
-        <img src="logo.png" alt="Logo">
-        <div class="navtxt">
-            <div class="nav-title">Barangay Pag-asa</div>
-            <div class="nav-sub">Pitogo, Quezon</div>
+            <img src="logo.png" alt="Logo">
+            <div class="navtxt">
+                <div class="nav-title">Barangay Pag-asa</div>
+                <div class="nav-sub">Pitogo, Quezon</div>
+            </div>
+            <ul class="nav-bar">
+        <li><a href="index.php" class="nav-link">Home</a></li>
+        <li><a href="AboutUs.php" class="nav-link">About Us</a></li>
+        <li><a href="index.php#services" class="nav-link">Services</a></li>
+        <li><a href="announcement.php" class="nav-link">Announcement</a></li>
+        <li><a href="official.php" class="nav-link">Official</a></li>
+
+        <div class="navbar-clock">
+            <div id="currentTime"></div>
+            <div id="currentDate"></div>
         </div>
-        <ul class="nav-bar">
-    <li><a href="index.php" class="nav-link">Home</a></li>
-    <li><a href="AboutUs.php" class="nav-link">About Us</a></li>
-    <li><a href="index.php#services" class="nav-link">Services</a></li>
-    <li><a href="announcement.php" class="nav-link">Announcement</a></li>
-    <li><a href="official.php" class="nav-link">Official</a></li>
 
-     <div class="navbar-clock">
-        <div id="currentTime"></div>
-        <div id="currentDate"></div>
-    </div>
-
-    <div class="profile-dropdown">
-    <button type="button" class="profile-btn" onclick="toggleProfile()">
-        <i class="fas fa-user-circle"></i>
-        Profile
-        <i class="fas fa-chevron-down"></i>
-    </button>
-    <div class="dropdown-menu" id="profileMenu">
-        <a href="profile.php">My Profile</a>
-        <a href="settings.php">Account Settings</a>
-        <hr>
-        <a href="logout.php" class="logout">Logout</a>
-    </div>
-   </div>
-
-    </section>
+        <div class="profile-dropdown">
+        <button type="button" class="profile-btn" onclick="toggleProfile()">
+            <i class="fas fa-user-circle"></i>
+            Profile
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="dropdown-menu" id="profileMenu">
+            <a href="profile.php">My Profile</a>
+            <a href="settings.php">Account Settings</a>
+            <hr>
+            <a href="logout.php" class="logout">Logout</a>
+        </div>
+   </section>
     
     <section id="Home">
         <div class="home">
@@ -267,7 +265,7 @@
         <div class="footer-links">
             <h3>Quick Links</h3>
 
-            <a href="#home">› Home</a>
+            <a href="index.php">› Home</a>
             <a href="AboutUs.php">› About Us</a>
             <a href="announcement.php">› Announcements</a>
             <a href="official.php">› Officials</a>

@@ -159,7 +159,7 @@
         <div class="footer-links">
             <h3>Quick Links</h3>
 
-            <a href="#home">› Home</a>
+            <a href="index.php">› Home</a>
             <a href="AboutUs.php">› About Us</a>
             <a href="announcement.php">› Announcements</a>
             <a href="official.php">› Officials</a>
