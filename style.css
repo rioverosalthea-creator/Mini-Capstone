@@ -2393,7 +2393,6 @@ html, body {
 
 /* Admin CSS */
 
-/* --- GLOBAL RESET & LAYOUT --- */
 * {
     margin: 0;
     padding: 0;
@@ -2407,7 +2406,6 @@ body.dashboard-body {
     min-height: 100vh;
 }
 
-/* --- SIDEBAR --- */
 .sidebar {
     width: 260px;
     background: #ffffff;
@@ -2488,7 +2486,6 @@ body.dashboard-body {
     color: #8B0000;
 }
 
-/* --- MAIN CONTENT AREA --- */
 .main-content {
     margin-left: 260px;
     flex: 1;
@@ -2496,7 +2493,6 @@ body.dashboard-body {
     flex-direction: column;
 }
 
-/* --- TOP HEADER --- */
 .top-header {
     background: white;
     padding: 20px 30px;
@@ -2528,7 +2524,6 @@ body.dashboard-body {
     font-size: 14px;
 }
 
-/* --- DASHBOARD CONTAINER & CARDS --- */
 .dashboard-container {
     padding: 30px;
 }
@@ -2586,18 +2581,12 @@ body.dashboard-body {
     color: #777;
 }
 
-/* --- CONTENT GRID LAYOUT --- */
 .content-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 20px;
 }
 
-@media(max-width: 992px) {
-    .content-grid {
-        grid-template-columns: 1fr;
-    }
-}
 
 .dashboard-card {
     background: white;
@@ -2717,11 +2706,6 @@ body.dashboard-body {
     box-shadow: 0 4px 10px rgba(13, 13, 13, 0.633);
 }
 
-/*admin gallery*/
-
-/* ==========================================
-   GLOBAL & DASHBOARD LAYOUT
-   ========================================== */
 * {
     margin: 0;
     padding: 0;
@@ -2735,7 +2719,6 @@ body.dashboard-body {
     min-height: 100vh;
 }
 
-/* Sidebar Styling */
 .sidebar {
     width: 260px;
     background: #ffffff;
@@ -2820,7 +2803,6 @@ body.dashboard-body {
     color: #8B0000;
 }
 
-/* Main Content Area */
 .main-content {
     margin-left: 260px;
     flex: 1;
@@ -2828,7 +2810,6 @@ body.dashboard-body {
     flex-direction: column;
 }
 
-/* Top Header */
 .top-header {
     background: white;
     padding: 20px 30px;
@@ -2860,15 +2841,11 @@ body.dashboard-body {
     font-size: 14px;
 }
 
-/* Dashboard Container */
-.dashboard-container {
+.dashboard-containers {
     padding: 30px;
 }
 
 
-/* ==========================================
-   ADMIN CARDS & FORMS STYLING
-   ========================================== */
 .admin-card {
     background: white;
     border-radius: 12px;
@@ -2921,7 +2898,6 @@ body.dashboard-body {
     border-color: #8B0000;
 }
 
-/* File input styling */
 .admin-form-group input[type="file"] {
     width: 100%;
     padding: 10px;
@@ -2946,7 +2922,6 @@ body.dashboard-body {
     background: #650000;
 }
 
-/* Action Button */
 .action-btn {
     background: #8B0000;
     color: white;

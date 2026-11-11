@@ -23,10 +23,9 @@
         </div>
         <div class="sidebar-menu-title">Navigation</div>
         <ul class="sidebar-menu">
-            <li><a href="#" class="active"><i class="fa-solid fa-house"></i> Dashboard</a></li>
-            <li><a href="adminGallery.php"><i class="fa-solid fa-images"></i></i> Gallery</a></li>
-            <li><a href="#"><i class="fa-solid fa-file-lines"></i> Clearances</a></li>
-            <li><a href="#"><i class="fa-solid fa-bullhorn"></i> Announcements</a></li>
+            <li><a href="admin_dashboard.php" class="active"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+            <li><a href="clearance.php"><i class="fa-solid fa-file-lines"></i> Clearances</a></li>
+            <li><a href="admin_announcements.php"><i class="fa-solid fa-bullhorn"></i> Announcements</a></li>
             <li><a href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
         </ul>
     </aside>
@@ -124,6 +123,34 @@
                 </div>
 
             </div>
+
+             <div class="dashboard-containers">
+
+            <div class="admin-card">
+                <div class="admin-card-heading">
+                    <h3><i class="fa-solid fa-cloud-arrow-up"></i> Upload New Gallery Photo</h3>
+                </div>
+                <div class="admin-card-body">
+                    <form action="upload_process.php" method="POST" enctype="multipart/form-data">
+                        
+                        <div class="admin-form-group">
+                            <label>Pick an image</label>
+                            <input type="file" name="gallery_image" accept="image/*" required>
+                        </div>
+
+                        <div class="admin-form-group">
+                            <label>Enter your caption</label>
+                            <input type="text" name="caption" placeholder="Ex. Barangay Clean-Up Drive 2026" required>
+                        </div>
+
+                        <button type="submit" class="action-btn">
+                            <i class="fa-solid fa-upload"></i> I-upload sa Gallery
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
 
         </div>
     </div>
