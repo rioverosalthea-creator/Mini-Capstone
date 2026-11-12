@@ -258,7 +258,7 @@ html, body {
     color: #dc3545;
 }
 
-.btn1, .btn2, .btn3, .btn4, .btn5 {
+.btn1, .btn2, .btn3, .btn4 {
     background-color: transparent; 
     color: white;
     padding: 15px 20px;
@@ -282,7 +282,7 @@ html, body {
     font-size: 20px; 
 }
 
-.btn1:hover, .btn2:hover, .btn3:hover, .btn4:hover, .btn5:hover {
+.btn1:hover, .btn2:hover, .btn3:hover, .btn4:hover{
     background-color: #830000; 
     border-color: #830000;    
 }

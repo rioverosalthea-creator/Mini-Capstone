@@ -64,7 +64,7 @@
             <h1>Announcements</h1>
             <p>Stay updated with the latest news and announcements from Barangay Pag-asa.</p>
         </div>
-     <div class="button-container">
+        <div class="button-container">
             <button class="btn3">
                 <i class="fa-solid fa-bullhorn"></i>
                 <a href="#Announcement2">Latest Announcements</a>
@@ -73,10 +73,6 @@
                 <i class="fa-solid fa-images"></i>
                 <a href="#Gallery">Photo Gallery</a>
             </button>
-            <button class="btn5">
-                <i class="fa-solid fa-calendar"></i>
-                <a href="#Calendar">Calendar of Activities</a>
-        </button>
         </div>
     </section>
 
