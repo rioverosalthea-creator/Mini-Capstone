@@ -17,66 +17,54 @@
 
     <section id="">
         <div class="form-layout">
-            <form class="lay-out">
+            <form class="lay-out" action="submit_complaint.php" method="POST">
                 <h2>BARANGAY COMPLAINT</h2>
                 <p>Complaint Form</p>
 
                 <div class="form-group">
                     <h4>A. Complaint Information</h4>
-                <label for="fullname">Full Name</label>
-                <input type="fullname" id="fullname" name="fullname" placeholder="Enter your full name">
 
-                <div class="form-group">
-                <label for="contact number">Contact Number:</label>
-                <input type="text" id="contact-number" name="contact-number">
-                </div>
+                    <label for="fullname">Full Name:</label>
+                    <input type="text" id="fullname" name="fullname" required>
 
-                <div class="form-group">
-                <label for="address">Complete Address:</label>
-                <input type="text" id="address" name="address">
+                    <label for="contact_number">Contact Number:</label>
+                    <input type="tel" id="contact_number" name="contact_number" required>
+
+                    <label for="address">Complete Address:</label>
+                    <input type="text" id="address" name="address" required>
                 </div>
 
                 <div class="form-group">
                     <h4>B. Respondent's Information</h4>
-                    <label for="name">Respondent's Full Name:</label>
-                    <input type="text" id="name" name="name">
-                </div>
 
-                <div class="form-group">
-                    <label for="address">Respondent's Address:</label>
-                    <input type="text" id="address" name="address">
+                    <label for="respondent_name">Respondent's Full Name:</label>
+                    <input type="text" id="respondent_name" name="respondent_name" required>
+
+                    <label for="respondent_address">Respondent's Address:</label>
+                    <input type="text" id="respondent_address" name="respondent_address" required>
                 </div>
 
                 <div class="form-group">
                     <h4>C. Complaint Details</h4>
+
                     <label for="complaint">Complaint:</label>
-                    <input type="text" id="complaint" name="complaint">
+                    <input type="text" id="complaint" name="complaint" required>
+
+                    <label for="incident_date">Date of Incident:</label>
+                    <input type="date" id="incident_date" name="incident_date" required>
+
+                    <label for="incident_time">Time of Incident:</label>
+                    <input type="time" id="incident_time" name="incident_time" required>
+
+                    <label for="location">Location of Incident:</label>
+                    <input type="text" id="location" name="location" required>
+
+                    <label for="description">Description of Incident:</label>
+                    <textarea id="description" name="description" required></textarea>
                 </div>
 
-                <div class="form-group">
-                    <label for="date">Date of incident:</label>
-                    <input type="date" id="c-date" name="date">
-                </div>
-
-                <div class="form-group">
-                    <label for="time">Time of incident:</label>
-                    <input type="time" id="time" name="time">
-                </div>
-
-                <div class="form-group">
-                    <label for="location">Location of incident:</label>
-                    <input type="text" id="location" name="location">
-                </div>
-
-                <div class="form-group">
-                    <label for="description">Description of incident:</label>
-                    <input type="text" id="description" name="description">
-                </div>
-                </div>
-
-                <button class="submit-button">Submit</button>
-                </form>
-                </div>     
+                <button type="submit" class="submit-button">Submit</button>  
     </section>
+
 </body>
 </html>

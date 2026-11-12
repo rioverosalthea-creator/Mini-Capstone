@@ -17,28 +17,31 @@
 
     <section id="">
         <div class="form-layout">
-            <form class="lay-out">
+            
+            <form class="lay-out" action="submit_clearance.php" method="POST">
                 <h2>BARANGAY CLEARANCE</h2>
                 <p>Request Clearance Form</p>
-                <div class="form-group">
-                <label for="fullname">Full Name</label>
-                <input type="fullname" id="fullname" name="fullname" placeholder="Enter your full name">
 
-                <label for="birthday">Date of Birth</label>
-                <input type="date" id="date" name="birthdate">
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" name="fullname"
+                        placeholder="Enter your full name" required>
+
+                    <label for="birthdate">Date of Birth</label>
+                    <input type="date" id="birthdate" name="birthdate" required>
                 </div>
-               
+
                 <div class="form-group2">
-                <label for="sex">Sex:</label>
+                    <label for="sex">Sex:</label>
                     <select name="sex" id="sex" required>
                         <option value="" disabled selected>Select Sex</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
                 </div>
-                
+
                 <div class="form-group2">
-                <label for="status">Civil Status</label>
+                    <label for="status">Civil Status</label>
                     <select name="status" id="status" required>
                         <option value="" disabled selected>Civil Status</option>
                         <option value="Single">Single</option>
@@ -49,28 +52,31 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="contact number">Contact Number:</label>
-                    <input type="text" id="contact-number" name="contact-number">
-
+                    <label for="contact_number">Contact Number:</label>
+                    <input type="tel" id="contact_number" name="contact_number"
+                        placeholder="Enter your contact number" required>
                 </div>
 
                 <div class="form-group">
                     <label for="address">Complete Address:</label>
-                    <input type="text" id="address" name="address">
+                    <input type="text" id="address" name="address"
+                        placeholder="Enter your complete address" required>
                 </div>
 
                 <div class="form-group">
                     <label for="purpose">Purpose of Request:</label>
-                    <input type="text" id="purpose" name="purpose">
+                    <input type="text" id="purpose" name="purpose"
+                        placeholder="Enter purpose of request" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="date">Preferred Claiming Date:</label>
-                    <input type="date" id="date" name="date">
+                    <label for="claim_date">Preferred Claiming Date:</label>
+                    <input type="date" id="claim_date" name="claim_date" required>
                 </div>
 
-                <button class="submit-button">Submit</button>
+                <button type="submit" class="submit-button">Submit</button>
             </form>
+
         </div>
     </section>
 </body>
