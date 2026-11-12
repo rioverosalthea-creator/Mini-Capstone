@@ -9,41 +9,55 @@
 </head>
 <body>
 
-<?php include 'navbar.php'; ?>
+<?php //include 'navbar.php'; ?>
 
     <section class="navigation">
-        <img src="logo.png" alt="Logo">
-        <div class="navtxt">
-            <div class="nav-title">Barangay Pag-asa</div>
-            <div class="nav-sub">Pitogo, Quezon</div>
-        </div>
-            <ul class="nav-bar">
-                <li><a href="index.php" class="nav-link">Home</a></li>
-    <li>
-        <a href="AboutUs.php" class="nav-link">About Us</a>
-    </li>
-    <li><a href="index.php#services" class="nav-link">Services</a></li>
-    <li><a href="announcement.php" class="nav-link">Announcement</a></li>
-    <li><a href="official.php" class="nav-link">Official</a></li>
-        <div class="navbar-clock">
-            <div id="currentTime"></div>
-            <div id="currentDate"></div>
-        </div>
+    <img src="logo.png" alt="Logo">
 
-        <div class="profile-dropdown">
-    <button type="button" class="profile-btn" onclick="toggleProfile()">
-        <i class="fas fa-user-circle"></i>
-        Profile
-        <i class="fas fa-chevron-down"></i>
-    </button>
-    <div class="dropdown-menu" id="profileMenu">
-        <a href="Profile.php">My Profile</a>
-        <a href="AccountSetting.php">Account Settings</a>
-        <hr>
-        <a href="logout.php" class="logout">Logout</a>
+    <div class="navtxt">
+        <div class="nav-title">Barangay Pag-asa</div>
+        <div class="nav-sub">Pitogo, Quezon</div>
     </div>
-   </div>
-    </section>
+
+    <ul class="nav-bar">
+        <li><a href="index.php" class="nav-link">Home</a></li>
+        <li><a href="AboutUs.php" class="nav-link">About Us</a></li>
+        <li><a href="index.php#services" class="nav-link">Services</a></li>
+        <li><a href="announcement.php" class="nav-link">Announcement</a></li>
+        <li><a href="official.php" class="nav-link">Official</a></li>
+    </ul>
+
+    <div class="navbar-clock">
+        <div id="currentTime"></div>
+        <div id="currentDate"></div>
+    </div>
+
+    <div class="profile-dropdown">
+        <button type="button" class="profile-btn" onclick="toggleProfile()">
+            <i class="fas fa-user-circle"></i>
+            Profile
+            <i class="fas fa-chevron-down"></i>
+        </button>
+
+        <div class="dropdown-menu" id="profileMenu">
+            <a href="Profile.php">My Profile</a>
+            <a href="AccountSetting.php">Account Settings</a>
+            <hr>
+            <a href="logout.php" class="logout">Logout</a>
+        </div>
+    </div>
+</section>
+
+<div class="welcome-slider">
+    <div class="welcome-track">
+        <span>WELCOME TO BARANGAY PAG-ASA</span>
+        <span class="welcome-dot">●</span>
+        <span>YOUR TRUSTED COMMUNITY HUB FOR INFORMATION AND SERVICES</span>
+        <span class="welcome-dot">●</span>
+        <span>WELCOME TO BARANGAY PAG-ASA</span>
+        <span class="welcome-dot">●</span>
+    </div>
+</div>
     
     <section id="Home">
         <div class="home">

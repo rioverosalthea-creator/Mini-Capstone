@@ -1,4 +1,21 @@
 
+<?php
+session_start();
+
+if (
+    !isset($_SESSION['profile']) ||
+    !isset($_SESSION['role']) ||
+    $_SESSION['role'] !== 'resident'
+) {
+    header("Location: login.php");
+    exit();
+}
+
+$profile = $_SESSION['profile'];
+
+$notifications = $profile['notifications'] ?? [];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,21 +32,22 @@
 
     <div class="settings-page-header">
 
-    <div class="settings-heading">
-        <h1>
-            <i class="fas fa-user-cog"></i>
-            Account Settings
-        </h1>
-        <p>Manage your account preferences and security.</p>
+        <div class="settings-heading">
+            <h1>
+                <i class="fas fa-user-cog"></i>
+                Account Settings
+            </h1>
+            <p>Manage your account preferences and security.</p>
+        </div>
+
+        <div class="profile-breadcrumb">
+            <a href="index.php">Home</a>
+            <span>/</span>
+            <span class="current-page">Account Settings</span>
+        </div>
+
     </div>
 
-    <div class="profile-breadcrumb">
-        <a href="index.php">Home</a>
-        <span>/</span>
-        <span class="current-page">Account Settings</span>
-    </div>
-
-    </div>
     <section class="settings-card">
 
         <div class="settings-card-heading">
@@ -47,17 +65,23 @@
 
             <div class="settings-field">
                 <label>Username</label>
-                <input type="text" value="ResidentUsername" readonly>
+                <input type="text"
+                    value="<?= htmlspecialchars($profile['username'] ?? '') ?>"
+                    readonly>
             </div>
 
             <div class="settings-field">
                 <label>Email Address</label>
-                <input type="email" value="resident@email.com" readonly>
+                <input type="email"
+                    value="<?= htmlspecialchars($profile['email'] ?? '') ?>"
+                    readonly>
             </div>
 
             <div class="settings-field">
                 <label>Account ID</label>
-                <input type="text" value="RES-001" readonly>
+                <input type="text"
+                    value="<?= htmlspecialchars($profile['resident_number'] ?? '') ?>"
+                    readonly>
             </div>
 
             <div class="settings-field">
@@ -94,19 +118,19 @@
                 <div class="settings-field">
                     <label>Current Password</label>
                     <input type="password" name="current_password"
-                           placeholder="Enter current password" required>
+                        placeholder="Enter current password" required>
                 </div>
 
                 <div class="settings-field">
                     <label>New Password</label>
                     <input type="password" name="new_password"
-                           placeholder="Enter new password" required>
+                        placeholder="Enter new password" required>
                 </div>
 
                 <div class="settings-field">
                     <label>Confirm New Password</label>
                     <input type="password" name="confirm_password"
-                           placeholder="Confirm new password" required>
+                        placeholder="Confirm new password" required>
                 </div>
 
             </div>
@@ -140,7 +164,8 @@
                     <p>Receive updates through your email address.</p>
                 </div>
                 <label class="switch">
-                    <input type="checkbox" name="email_notifications" value="1">
+                    <input type="checkbox" name="email_notifications" value="1"
+                    <?= !empty($notifications['email_notifications']) ? 'checked' : '' ?>>
                     <span class="slider"></span>
                 </label>
             </div>
@@ -151,7 +176,8 @@
                     <p>Receive updates through your mobile number.</p>
                 </div>
                 <label class="switch">
-                    <input type="checkbox" name="sms_notifications" value="1">
+                    <input type="checkbox" name="email_notifications" value="1"
+                    <?= !empty($notifications['email_notifications']) ? 'checked' : '' ?>>
                     <span class="slider"></span>
                 </label>
             </div>
@@ -162,7 +188,8 @@
                     <p>Get notified about barangay announcements.</p>
                 </div>
                 <label class="switch">
-                    <input type="checkbox" name="announcement_notifications" value="1">
+                    <input type="checkbox" name="announcement_notifications" value="1"
+                    <?= !empty($notifications['announcement_notifications']) ? 'checked' : '' ?>>
                     <span class="slider"></span>
                 </label>
             </div>
@@ -173,7 +200,8 @@
                     <p>Receive updates about your submitted requests.</p>
                 </div>
                 <label class="switch">
-                    <input type="checkbox" name="request_notifications" value="1">
+                    <input type="checkbox" name="request_notifications" value="1"
+                    <?= !empty($notifications['request_notifications']) ? 'checked' : '' ?>>
                     <span class="slider"></span>
                 </label>
             </div>
@@ -205,21 +233,26 @@
                 <p>Sign out of your Barangay Pag-asa account.</p>
             </div>
 
-            <a href="logout.php" class="logout-btn" href="logout.php">
+            <a href="login.php" class="logout-btn">
                 <i class="fas fa-sign-out-alt"></i> Log Out
             </a>
         </div>
 
         <div class="account-action delete-action">
-            <div>
-                <h3>Delete Account</h3>
-                <p>Permanently remove your account and associated information.</p>
-            </div>
+    <div>
+        <h3>Delete Account</h3>
+        <p>Permanently remove your account and associated information.</p>
+    </div>
 
-            <button type="button" class="delete-account-btn" onclick="confirmDelete()" href="login.php">
-                <i class="fas fa-trash-alt"></i> Delete Account
-            </button>
-        </div>
+    <form action="delete_account.php" method="POST"
+        onsubmit="return confirm('Are you sure you want to delete your account? This action cannot be undone.');">
+
+        <button type="submit" class="delete-account-btn">
+            <i class="fas fa-trash-alt"></i> Delete Account
+        </button>
+
+    </form>
+</div>
 
     </section>
 

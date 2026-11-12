@@ -1,15 +1,27 @@
+
+<?php
+session_start();
+
+if (!isset($_SESSION['profile']) || $_SESSION['role'] !== 'resident') {
+    header("Location: login.php");
+    exit();
+}
+
+$profile = $_SESSION['profile'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini Capstone</title>
+    <title>My Profile | Barangay Pag-asa</title>
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
-<body>
 
-<?php //include 'navbar.php'; ?>
+<body>
 
 <main class="profile-page">
 
@@ -21,7 +33,7 @@
 
         <div class="profile-breadcrumb">
             <a href="index.php">Home</a>
-            <span>/</span>
+            <span></span>
             <span>My Profile</span>
         </div>
     </div>
@@ -33,7 +45,7 @@
         </div>
 
         <div class="profile-summary-info">
-            <h2>Resident Name</h2>
+            <h2><?= htmlspecialchars($profile['full_name'] ?? '') ?></h2>
             <span class="resident-badge">Barangay Resident</span>
 
             <div class="profile-meta">
@@ -44,18 +56,18 @@
 
                 <span>
                     <i class="fas fa-calendar-alt"></i>
-                    Member since: January 2025
+                    <?= htmlspecialchars($profile['birth_date'] ?? '') ?>
                 </span>
             </div>
         </div>
 
         <button type="button" class="edit-profile-btn"
-            onclick="openEditProfile()">
+                onclick="openEditProfile()">
             <i class="fas fa-edit"></i>
             Edit Profile
-        </button>        
+        </button>
 
-    </section>  
+    </section>
 
     <section class="profile-information">
 
@@ -72,36 +84,35 @@
 
                 <div class="information-item">
                     <label>Full Name</label>
-                    <p>Resident Name</p>
+                    <p><?= htmlspecialchars($profile['full_name'] ?? '') ?></p>
                 </div>
 
                 <div class="information-item">
                     <label>Date of Birth</label>
-                    <p>Month DD, YYYY</p>
+                    <p><?= htmlspecialchars($profile['birth_date'] ?? '') ?></p>
                 </div>
 
                 <div class="information-item">
                     <label>Sex</label>
-                    <p>Not specified</p>
+                    <p><?= htmlspecialchars($profile['sex'] ?? '') ?></p>
                 </div>
 
                 <div class="information-item">
                     <label>Civil Status</label>
-                    <p>Not specified</p>
+                    <p><?= htmlspecialchars($profile['civil_status'] ?? '') ?></p>
                 </div>
 
                 <div class="information-item">
                     <label>Occupation</label>
-                    <p>Not specified</p>
+                    <p><?= htmlspecialchars($profile['occupation'] ?? '') ?></p>
                 </div>
 
                 <div class="information-item">
                     <label>Complete Address</label>
-                    <p>Barangay Pag-asa, Pitogo, Quezon</p>
+                    <p><?= htmlspecialchars($profile['complete_address'] ?? '') ?></p>
                 </div>
 
             </div>
-
         </div>
 
         <div class="profile-card">
@@ -117,33 +128,32 @@
 
                 <div class="information-item">
                     <label>Mobile Number</label>
-                    <p>Not provided</p>
+                    <p><?= htmlspecialchars($profile['mobile_number'] ?? '') ?></p>
                 </div>
 
                 <div class="information-item">
                     <label>Email Address</label>
-                    <p>Not provided</p>
+                    <p><?= htmlspecialchars($profile['email'] ?? '') ?></p>
                 </div>
 
                 <div class="information-item">
-                    <label>Emergency Contact</label>
-                    <p>Not provided</p>
+                    <label>Emergency Contact Name</label>
+                    <p><?= htmlspecialchars($profile['emergency_contact_name'] ?? '') ?></p>
                 </div>
 
                 <div class="information-item">
                     <label>Emergency Contact Number</label>
-                    <p>Not provided</p>
+                    <p><?= htmlspecialchars($profile['emergency_contact_number'] ?? '') ?></p>
                 </div>
 
             </div>
-
         </div>
 
         <div class="profile-card">
 
             <div class="card-heading">
                 <h3>
-                    <i class="fas fa-home"></i>
+                    <i class="fas fa-house"></i>
                     Household Information
                 </h3>
             </div>
@@ -152,21 +162,15 @@
 
                 <div class="information-item">
                     <label>Household Number</label>
-                    <p>Not provided</p>
+                    <p><?= htmlspecialchars($profile['household_number'] ?? '') ?></p>
                 </div>
 
                 <div class="information-item">
                     <label>Family Head</label>
-                    <p>Not provided</p>
-                </div>
-
-                <div class="information-item">
-                    <label>Purok</label>
-                    <p>Not provided</p>
+                    <p><?= htmlspecialchars($profile['family_head'] ?? '') ?></p>
                 </div>
 
             </div>
-
         </div>
 
         <div class="profile-card">
@@ -182,176 +186,71 @@
 
                 <div class="information-item">
                     <label>Username</label>
-                    <p>Resident Username</p>
+                    <p><?= htmlspecialchars($profile['username'] ?? '') ?></p>
                 </div>
 
                 <div class="information-item">
                     <label>Account Type</label>
-                    <p>Resident</p>
+                    <p><?= htmlspecialchars($profile['account_type'] ?? 'Resident') ?></p>
                 </div>
+
             </div>
         </div>
+
     </section>
 
-<div class="profile-modal" id="editProfileModal">
+    <section class="request-status-section">
 
-    <div class="profile-modal-content">
-
-        <div class="profile-modal-header">
-            <h2><i class="fas fa-user-edit"></i> Edit Profile</h2>
-
-            <button type="button" class="close-profile-modal"
-                    onclick="closeEditProfile()">
-                &times;
-            </button>
+        <div class="request-status-heading">
+            <div>
+                <h2>My Request Status</h2>
+                <p>Track the progress of your barangay requests.</p>
+            </div>
         </div>
 
-        <form id="editProfileForm">
+        <?php if (!empty($requests)): ?>
 
-            <h3>Personal Information</h3>
+            <div class="request-status-list">
 
-            <div class="edit-form-grid">
+                <?php foreach ($requests as $request): ?>
 
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" id="editFullName"
-                           placeholder="Enter full name" required>
-                </div>
+                    <div class="request-status-card">
 
-                <div class="form-group">
-                    <label>Date of Birth</label>
-                    <input type="date" id="editBirthDate">
-                </div>
+                        <div class="request-details">
+                            <h3>
+                                <?= htmlspecialchars($request['request_type'] ?? '') ?>
+                            </h3>
 
-                <div class="form-group">
-                    <label>Sex</label>
-                    <select id="editSex">
-                        <option value="">Select sex</option>
-                        <option>Male</option>
-                        <option>Female</option>
-                    </select>
-                </div>
+                            <p>Request ID:
+                                <?= htmlspecialchars($request['request_id'] ?? '') ?>
+                            </p>
 
-                <div class="form-group">
-                    <label>Civil Status</label>
-                    <select id="editCivilStatus">
-                        <option value="">Select status</option>
-                        <option>Single</option>
-                        <option>Married</option>
-                        <option>Widowed</option>
-                        <option>Separated</option>
-                    </select>
-                </div>
+                            <p>Date Submitted:
+                                <?= htmlspecialchars($request['date_submitted'] ?? '') ?>
+                            </p>
+                        </div>
 
-                <div class="form-group">
-                    <label>Occupation</label>
-                    <input type="text" id="editOccupation"
-                           placeholder="Enter occupation">
-                </div>
+                        <span class="status <?= htmlspecialchars(strtolower($request['status'] ?? '')) ?>">
+                            <?= htmlspecialchars($request['status'] ?? '') ?>
+                        </span>
 
-                <div class="form-group full-width">
-                    <label>Complete Address</label>
-                    <input type="text" id="editAddress"
-                           placeholder="Enter complete address">
-                </div>
-
-            </div>
-
-            <h3>Contact Information</h3>
-
-            <div class="edit-form-grid">
-
-                <div class="form-group">
-                    <label>Mobile Number</label>
-                    <input type="tel" id="editMobile"
-                           placeholder="Enter mobile number">
-                </div>
-
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" id="editEmail"
-                           placeholder="Enter email address">
-                </div>
-
-                <div class="form-group">
-                    <label>Emergency Contact</label>
-                    <input type="text" id="editEmergencyName"
-                           placeholder="Emergency contact name">
-                </div>
-
-                <div class="form-group">
-                    <label>Emergency Contact Number</label>
-                    <input type="tel" id="editEmergencyNumber"
-                           placeholder="Emergency contact number">
-                </div>
-
-            </div>
-
-            <div class="profile-modal-actions">
-                <button type="button" class="cancel-btn"
-                        onclick="closeEditProfile()">
-                    Cancel
-                </button>
-
-                <button type="submit" class="save-btn">
-                    <i class="fas fa-save"></i> Save Changes
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
-
-<section class="request-status-section">
-
-    <div class="request-status-heading">
-        <div>
-            <h2>My Request Status</h2>
-            <p>Track the progress of your barangay requests.</p>
-        </div>
-    </div>
-
-    <?php if (!empty($requests)): ?>
-
-        <div class="request-status-list">
-
-            <?php foreach ($requests as $request): ?>
-
-                <div class="request-status-card">
-
-                    <div class="request-details">
-                        <h3><?php echo htmlspecialchars($request['request_type']); ?></h3>
-
-                        <p>Request ID:
-                            <?php echo htmlspecialchars($request['request_id']); ?>
-                        </p>
-
-                        <p>Date Submitted:
-                            <?php echo htmlspecialchars($request['date_submitted']); ?>
-                        </p>
                     </div>
 
-                    <span class="status <?php echo strtolower($request['status']); ?>">
-                        <?php echo htmlspecialchars($request['status']); ?>
-                    </span>
+                <?php endforeach; ?>
 
-                </div>
+            </div>
 
-            <?php endforeach; ?>
+        <?php else: ?>
 
-        </div>
+            <div class="no-requests">
+                <i class="fas fa-file-circle-plus"></i>
+                <h3>No Requests Yet</h3>
+                <p>You haven't submitted any barangay requests yet.</p>
+            </div>
 
-    <?php else: ?>
+        <?php endif; ?>
 
-        <div class="no-requests">
-            <i class="fas fa-file-circle-plus"></i>
-            <h3>No Requests Yet</h3>
-            <p>You haven't submitted any barangay requests yet.</p>
-        </div>
-
-    <?php endif; ?>
-
-</section>
-
+    </section>
 
 </main>
 

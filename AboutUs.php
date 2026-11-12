@@ -9,7 +9,8 @@
 </head>
 <body>
 
-    <?php include 'navbar.php'; ?>
+
+ <?php //include 'navbar.php'; ?>
 
 <section class="navigation">
             <img src="logo.png" alt="Logo">
@@ -42,6 +43,17 @@
             <a href="logout.php" class="logout">Logout</a>
         </div>
    </section>
+
+   <div class="welcome-slider">
+    <div class="welcome-track">
+        <span>WELCOME TO BARANGAY PAG-ASA</span>
+        <span class="welcome-dot">●</span>
+        <span>YOUR TRUSTED COMMUNITY HUB FOR INFORMATION AND SERVICES</span>
+        <span class="welcome-dot">●</span>
+        <span>WELCOME TO BARANGAY PAG-ASA</span>
+        <span class="welcome-dot">●</span>
+    </div>
+</div>
 
    <section id="aboutUs">
    <section id="Home">

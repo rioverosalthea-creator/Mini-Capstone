@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['profile']) || $_SESSION['role'] !== 'resident') {
+    header("Location: login.php");
+    exit();
+}
+
+$profile = $_SESSION['profile'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,51 +20,55 @@
 </head>
 <body>
 
-    <?php
-session_start();
-
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
-}
-
-include 'navbar.php';
-?>
-
-    
-
     <section class="navigation">
-            <img src="logo.png" alt="Logo">
-            <div class="navtxt">
-                <div class="nav-title">Barangay Pag-asa</div>
-                <div class="nav-sub">Pitogo, Quezon</div>
-            </div>
-            <ul class="nav-bar">
+
+    <img src="logo.png" alt="Logo">
+
+    <div class="navtxt">
+        <div class="nav-title">Barangay Pag-asa</div>
+        <div class="nav-sub">Pitogo, Quezon</div>
+    </div>
+
+    <ul class="nav-bar">
         <li><a href="index.php" class="nav-link">Home</a></li>
         <li><a href="AboutUs.php" class="nav-link">About Us</a></li>
         <li><a href="index.php#services" class="nav-link">Services</a></li>
         <li><a href="announcement.php" class="nav-link">Announcement</a></li>
         <li><a href="official.php" class="nav-link">Official</a></li>
-        
-        <div class="navbar-clock">
-            <div id="currentTime"></div>
-            <div id="currentDate"></div>
-        </div>
+    </ul>
 
-        <div class="profile-dropdown">
+    <div class="navbar-clock">
+        <div id="currentTime"></div>
+        <div id="currentDate"></div>
+    </div>
+
+    <div class="profile-dropdown">
         <button type="button" class="profile-btn" onclick="toggleProfile()">
             <i class="fas fa-user-circle"></i>
             Profile
             <i class="fas fa-chevron-down"></i>
         </button>
+
         <div class="dropdown-menu" id="profileMenu">
             <a href="Profile.php">My Profile</a>
             <a href="AccountSetting.php">Account Settings</a>
             <hr>
             <a href="login.php" class="logout">Logout</a>
         </div>
-   </section>
-    
+    </div>
+</section>
+
+<div class="welcome-slider">
+    <div class="welcome-track">
+        <span>WELCOME TO BARANGAY PAG-ASA</span>
+        <span class="welcome-dot">●</span>
+        <span>YOUR TRUSTED COMMUNITY HUB FOR INFORMATION AND SERVICES</span>
+        <span class="welcome-dot">●</span>
+        <span>WELCOME TO BARANGAY PAG-ASA</span>
+        <span class="welcome-dot">●</span>
+    </div>
+</div>
+
     <section id="Home">
         <div class="home">
             <img src="pitogobg.jpg" alt="BarangayBg" class="bg-image">
@@ -91,28 +106,28 @@ include 'navbar.php';
                     <div class="service-item"><p>Clearances</p>
                         <i class="fa-solid fa-calendar custom-icon1"></i>
                         <h5>Get Barangay Clearances for various purposes with digital processing.</h5>
-                        <button class="btn6">
+                        <button class="btn-s">
                             <a class = "btntxt" href="BarangayClearance.php">Get Clearances</a>
                         </button>
                     </div>
                     <div class="service-item"><p>Complaint Resolution</p>
                         <i class="fa-solid fa-triangle-exclamation custom-icon2"></i>
                         <h5>Get your complaints resolved efficiently and effectively.</h5>
-                        <button class="btn6">
+                        <button class="btn-s">
                             <a class = "btntxt"href="Complaint.php">View Complaints</a>
                         </button>   
                     </div>
                     <div class="service-item"><p>Certificates</p>
                         <i class="fa-solid fa-file-lines custom-icon3"></i>
                         <h5>Request official barangay certificates.</h5>
-                        <button class="btn6">
+                        <button class="btn-s">
                             <a class = "btntxt" href="Certificates.php">Request Certificates</a>
                         </button>
                     </div>
                     <div class="service-item"><p>Request</p>
                         <i class="fa-solid fa-file-circle-question custom-icon4"></i>
                         <h5>Request barangay services such as waste collection, and streetlight repairs.</h5>
-                        <button class="btn6">
+                        <button class="btn-s">
                             <a class = "btntxt"href="Request.php">Request Services</a>
                         </button>
                     </div>

@@ -26,7 +26,7 @@
             <li><a href="admin_dashboard.php" class="active"><i class="fa-solid fa-house"></i> Dashboard</a></li>
             <li><a href="clearance.php"><i class="fa-solid fa-file-lines"></i> Clearances</a></li>
             <li><a href="admin_announcements.php"><i class="fa-solid fa-bullhorn"></i> Announcements</a></li>
-            <li><a href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+            <li><a href="login.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
         </ul>
     </aside>
 
@@ -144,7 +144,7 @@
                         </div>
 
                         <button type="submit" class="action-btn">
-                            <i class="fa-solid fa-upload"></i> I-upload sa Gallery
+                            <i class="fa-solid fa-upload"></i> Upload in Gallery
                         </button>
                     </form>
                 </div>
