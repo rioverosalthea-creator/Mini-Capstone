@@ -47,7 +47,6 @@
 
         <div class="dashboard-container">
 
-            <!-- Upload New Announcement Card -->
             <div class="admin-card">
                 <div class="admin-card-heading">
                     <h3><i class="fa-solid fa-bullhorn"></i> Upload New Announcement</h3>
