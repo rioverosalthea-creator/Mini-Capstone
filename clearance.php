@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -8,10 +7,10 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 }
 
 $requests = $_SESSION['clearance_requests'] ?? [];
-
 $complaints = $_SESSION['complaint_requests'] ?? [];
 
 $totalRequests = count($requests);
+
 $pendingRequests = 0;
 $approvedRequests = 0;
 $rejectedRequests = 0;
@@ -27,7 +26,9 @@ foreach ($requests as $request) {
         $rejectedRequests++;
     }
 }
+
 $totalComplaints = count($complaints);
+
 $pendingComplaints = 0;
 $approvedComplaints = 0;
 $rejectedComplaints = 0;
@@ -43,6 +44,7 @@ foreach ($complaints as $complaint) {
         $rejectedComplaints++;
     }
 }
+
 ?>
 
 <!DOCTYPE html>

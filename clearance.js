@@ -1,5 +1,5 @@
-
 let selectedRequestId = null;
+let selectedComplaintId = null;
 
 function showDetails(request) {
     selectedRequestId = request.request_id;
@@ -14,7 +14,9 @@ function showDetails(request) {
     document.getElementById("detailPurpose").textContent = request.purpose || "";
     document.getElementById("detailClaimDate").textContent = request.claim_date || "";
     document.getElementById("detailSubmitted").textContent = request.date_submitted || "";
-    document.getElementById("requestStatus").value = request.request_status || "Pending";
+
+    document.getElementById("requestStatus").value =
+        request.request_status || "Pending";
 
     document.getElementById("detailsModal").classList.add("active");
 }
@@ -24,7 +26,12 @@ function closeDetails() {
 }
 
 function saveStatus() {
-    if (!selectedRequestId) return;
+    if (!selectedRequestId) {
+        alert("Please select a clearance request first.");
+        return;
+    }
+
+    const status = document.getElementById("requestStatus").value;
 
     const form = document.createElement("form");
     form.method = "POST";
@@ -38,30 +45,37 @@ function saveStatus() {
     const statusInput = document.createElement("input");
     statusInput.type = "hidden";
     statusInput.name = "request_status";
-    statusInput.value = document.getElementById("requestStatus").value;
+    statusInput.value = status;
 
     form.appendChild(idInput);
     form.appendChild(statusInput);
+
     document.body.appendChild(form);
     form.submit();
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+
     const searchInput = document.getElementById("searchInput");
 
     if (searchInput) {
         searchInput.addEventListener("input", function () {
+
             const search = this.value.toLowerCase();
 
-            document.querySelectorAll("tbody tr").forEach(row => {
-                row.style.display = row.textContent.toLowerCase().includes(search) ? "" : "none";
+            document.querySelectorAll("tbody tr").forEach(function (row) {
+
+                row.style.display =
+                    row.textContent.toLowerCase().includes(search)
+                        ? ""
+                        : "none";
+
             });
         });
     }
+
 });
 
-
-let selectedComplaintId = null;
 
 function showComplaintDetails(complaint) {
     selectedComplaintId = complaint.request_id;
@@ -81,7 +95,8 @@ function showComplaintDetails(complaint) {
     document.getElementById("incidentDescription").textContent = complaint.description || "";
     document.getElementById("complaintSubmitted").textContent = complaint.date_submitted || "";
 
-    document.getElementById("complaintStatus").value = complaint.request_status || "Pending";
+    document.getElementById("complaintStatus").value =
+        complaint.request_status || "Pending";
 
     document.getElementById("complaintModal").classList.add("active");
 }
@@ -91,7 +106,12 @@ function closeComplaintDetails() {
 }
 
 function saveComplaintStatus() {
-    if (!selectedComplaintId) return;
+    if (!selectedComplaintId) {
+        alert("Please select a complaint request first.");
+        return;
+    }
+
+    const status = document.getElementById("complaintStatus").value;
 
     const form = document.createElement("form");
     form.method = "POST";
@@ -105,7 +125,7 @@ function saveComplaintStatus() {
     const statusInput = document.createElement("input");
     statusInput.type = "hidden";
     statusInput.name = "request_status";
-    statusInput.value = document.getElementById("complaintStatus").value;
+    statusInput.value = status;
 
     form.appendChild(idInput);
     form.appendChild(statusInput);
@@ -115,27 +135,32 @@ function saveComplaintStatus() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+
     const complaintSearch = document.getElementById("complaintSearchInput");
 
     if (complaintSearch) {
         complaintSearch.addEventListener("input", function () {
-            const searchValue = this.value.toLowerCase();
-            const rows = document.querySelectorAll(
-                "#complaintSearchInput"
-            );
 
-            const tableRows = complaintSearch
-                .closest(".request-section")
-                .querySelectorAll("tbody tr");
+            const searchValue = this.value.toLowerCase();
+
+            const requestSection = complaintSearch.closest(".request-section");
+
+            if (!requestSection) return;
+
+            const tableRows = requestSection.querySelectorAll("tbody tr");
 
             tableRows.forEach(function (row) {
-                const complainant = row.cells[1]?.textContent.toLowerCase() || "";
 
-                row.style.display = complainant.includes(searchValue)
-                    ? ""
-                    : "none";
+                const complainant =
+                    row.cells[1]?.textContent.toLowerCase() || "";
+
+                row.style.display =
+                    complainant.includes(searchValue)
+                        ? ""
+                        : "none";
+
             });
         });
     }
-});
 
+});
