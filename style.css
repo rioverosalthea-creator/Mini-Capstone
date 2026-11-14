@@ -3151,9 +3151,9 @@ body {
 .summary-card {
     background: #FFFFFF;
     padding: 22px;
-    border: 1px solid #F0CCCC;
     border-radius: 10px;
     box-shadow: 0 3px 10px rgba(120, 25, 25, 0.08);
+    border-left: none;
 }
 
 .summary-card p {
@@ -3169,10 +3169,10 @@ body {
 
 .request-section {
     background: #FFFFFF;
-    border: 1px solid #F0CCCC;
     border-radius: 12px;
     padding: 25px;
     box-shadow: 0 3px 10px rgba(120, 25, 25, 0.05);
+    margin-bottom: 30px;
 }
 
 .section-heading {
@@ -3304,7 +3304,7 @@ tbody tr:hover {
     max-width: 700px;
     max-height: 90vh;
     overflow-y: auto;
-    background: #FFFAFA;
+    background: white;
     border-radius: 12px;
     padding: 30px;
     border-top: 5px solid #A83232;
