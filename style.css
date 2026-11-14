@@ -2394,6 +2394,12 @@ html, body {
     margin-bottom: 25px;
 }
 
+.log-group > p {
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 0px;
+}
+
 .log-group {
     display: flex;
     flex-direction: column;
@@ -3077,6 +3083,8 @@ body.login-body .signup-container {
     flex-direction: column;
     min-width: 0;
 }
+
+
 
 .signup-grid input,
 .signup-grid select {
