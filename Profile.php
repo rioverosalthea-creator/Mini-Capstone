@@ -2,12 +2,14 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['profile']) || $_SESSION['role'] !== 'resident') {
+if (!isset($_SESSION['profile']) || !isset($_SESSION['role']) || $_SESSION['role'] !== 'resident') {
     header("Location: login.php");
     exit();
 }
 
 $profile = $_SESSION['profile'];
+
+$documentRequests = $_SESSION['document_requests'] ?? [];
 ?>
 
 <!DOCTYPE html>
@@ -208,47 +210,42 @@ $profile = $_SESSION['profile'];
             </div>
         </div>
 
-        <?php if (!empty($requests)): ?>
+                <?php if (!empty($documentRequests)): ?>
 
-            <div class="request-status-list">
+                <?php foreach ($documentRequests as $request): ?>
 
-                <?php foreach ($requests as $request): ?>
+                    <div class="request-card">
+                        <h3>
+                            <?= htmlspecialchars($request['document_type']) ?>
+                        </h3>
 
-                    <div class="request-status-card">
+                        <p>
+                            Request ID:
+                            <?= htmlspecialchars($request['request_id']) ?>
+                        </p>
 
-                        <div class="request-details">
-                            <h3>
-                                <?= htmlspecialchars($request['request_type'] ?? '') ?>
-                            </h3>
+                        <p>
+                            Date Submitted:
+                            <?= htmlspecialchars($request['date_submitted']) ?>
+                        </p>
 
-                            <p>Request ID:
-                                <?= htmlspecialchars($request['request_id'] ?? '') ?>
-                            </p>
-
-                            <p>Date Submitted:
-                                <?= htmlspecialchars($request['date_submitted'] ?? '') ?>
-                            </p>
-                        </div>
-
-                        <span class="status <?= htmlspecialchars(strtolower($request['status'] ?? '')) ?>">
-                            <?= htmlspecialchars($request['status'] ?? '') ?>
-                        </span>
-
+                        <p>
+                            Status:
+                            <?= htmlspecialchars($request['request_status']) ?>
+                        </p>
                     </div>
 
                 <?php endforeach; ?>
 
-            </div>
+            <?php else: ?>
 
-        <?php else: ?>
+                <div class="no-requests">
+                    <i class="fas fa-file-circle-plus"></i>
+                    <h3>No Requests Yet</h3>
+                    <p>You haven't submitted any barangay requests yet.</p>
+                </div>
 
-            <div class="no-requests">
-                <i class="fas fa-file-circle-plus"></i>
-                <h3>No Requests Yet</h3>
-                <p>You haven't submitted any barangay requests yet.</p>
-            </div>
-
-        <?php endif; ?>
+            <?php endif; ?>
 
     </section>
 

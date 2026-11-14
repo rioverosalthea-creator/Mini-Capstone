@@ -2,6 +2,11 @@
 <?php
 session_start();
 
+if (!isset($_SESSION['profile']) || !isset($_SESSION['role']) || $_SESSION['role'] !== 'resident') {
+    header("Location: login.php");
+    exit();
+}
+
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     header("Location: BarangayClearance.php");
     exit();
@@ -27,15 +32,27 @@ $request = [
     'address' => $_POST['address'] ?? '',
     'purpose' => $_POST['purpose'] ?? '',
     'claim_date' => $_POST['claim_date'] ?? '',
+    'document_type' => 'Barangay Clearance',
     'request_status' => 'Pending',
     'date_submitted' => date('Y-m-d')
 ];
 
 $_SESSION['clearance_requests'][] = $request;
 
+if (!isset($_SESSION['document_requests'])) {
+    $_SESSION['document_requests'] = [];
+}
+
+$_SESSION['document_requests'][] = [
+    'request_id' => $request['request_id'],
+    'document_type' => $request['document_type'],
+    'date_submitted' => $request['date_submitted'],
+    'request_status' => $request['request_status']
+];
+
 echo "<script>
     alert('Your Barangay Clearance request has been submitted successfully!');
-    window.location.href = 'BarangayClearance.php';
+    window.location.href = 'Profile.php';
 </script>";
 
 exit();
