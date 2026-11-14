@@ -1,3 +1,30 @@
+<?php
+session_start();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+
+    if ($password !== $confirm_password) {
+        echo "<script>
+                alert('Your password doesn\'t match!');
+                window.history.back();
+              </script>";
+        exit();
+    } else {
+        // Dito mo ilalagay ang code para i-update ang password sa database
+        // Halimbawa: UPDATE users SET password = '$password' WHERE email = '$_SESSION[reset_email]'
+
+        // Kapag MATCH, tutuloy sa login.php o success page
+        echo "<script>
+                alert('Password successfully changed!');
+                window.location.href = 'login.php';
+              </script>";
+        exit();
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,21 +43,29 @@
         </div>
 
         <div class="log-content">
-            <h2>Enter OTP</h2>
-            <form action="verify_otp.php" method="POST">
+            <h2>Create New Password</h2>
+            <form action="login.php" method="POST">
                 <div class="log-group">
-                    <label>OTP Code</label>
-                    <p>Enter the OTP that is sent to your email.</p>
-                    <input type="text" name="otp_code" placeholder="Enter your OTP" required>
+                    <label>Password</label>
+                    <input type="password" name="password"
+                           placeholder="Enter your password" required>
+                </div>
+
+                <div class="log-group">
+                    <label>Re-enter Password</label>
+                    <input type="password" name="confirm password"
+                           placeholder="Re-enter your password" required>
                 </div>
 
                 <button type="submit" class="log-button" name="verify">
-                    VERIFY OTP
+                    LOG IN
                 </button>
             </form>
 
             <div class="log-footer">
-                <p>Didn't receive code? <a href="forgot_password.php">Resend OTP</a></p>
+                <p>Already have an account?
+                    <a href="login.php">Log In</a>
+                </p>
             </div>
         </div>
     </div>

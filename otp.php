@@ -20,10 +20,10 @@ session_start();
 
         <div class="log-content">
             <h2>Enter OTP</h2>
+            <p>Enter the OTP that is sent to your email.</p>
             <form action="verify_otp.php" method="POST">
                 <div class="log-group">
-                    <label>OTP Code</label>
-                    <p>Enter the OTP that is sent to your email.</p>
+                    <label>OTP Code:</label>
                     <input type="text" name="otp_code" placeholder="Enter your OTP" required>
                 </div>
 
