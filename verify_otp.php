@@ -1,6 +1,15 @@
 <?php
 session_start();
 
+// Siguraduhing dumaan muna sa OTP verification bago makapunta dito
+if (!isset($_SESSION['otp_verified']) || $_SESSION['otp_verified'] !== true) {
+    echo "<script>
+            alert('Unauthorized access! Please verify your OTP first.');
+            window.location.href = 'otp.php';
+          </script>";
+    exit();
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
@@ -12,15 +21,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               </script>";
         exit();
     } else {
-        // Dito mo ilalagay ang code para i-update ang password sa database
-        // Halimbawa: UPDATE users SET password = '$password' WHERE email = '$_SESSION[reset_email]'
+        // --- DATABASE CONNECTION & UPDATE ---
+        // Palitan ang 'barangay_db' at 'residents' kung iba ang pangalan sa XAMPP mo
+        $conn = new mysqli("localhost", "root", "", "barangay_db");
 
-        // Kapag MATCH, tutuloy sa login.php o success page
-        echo "<script>
-                alert('Password successfully changed!');
-                window.location.href = 'login.php';
-              </script>";
-        exit();
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $email = $_SESSION['reset_email'];
+        
+        // UPDATE query para mapalitan ang password sa database
+        $stmt = $conn->prepare("UPDATE residents SET password = ? WHERE email = ?");
+        $stmt->bind_param("ss", $password, $email);
+
+        if ($stmt->execute()) {
+            // Linisin ang session para tapos na ang forgot password process
+            unset($_SESSION['otp']);
+            unset($_SESSION['reset_email']);
+            unset($_SESSION['otp_verified']);
+
+            echo "<script>
+                    alert('Password successfully changed!');
+                    window.location.href = 'login.php';
+                  </script>";
+            exit();
+        } else {
+            echo "<script>
+                    alert('Error updating password: " . $conn->error . "');
+                    window.history.back();
+                  </script>";
+        }
+
+        $stmt->close();
+        $conn->close();
     }
 }
 ?>
@@ -44,7 +78,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <div class="log-content">
             <h2>Create New Password</h2>
-            <form action="login.php" method="POST">
+            
+            <form action="verify_otp.php" method="POST">
                 <div class="log-group">
                     <label>Password</label>
                     <input type="password" name="password"
@@ -53,12 +88,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <div class="log-group">
                     <label>Re-enter Password</label>
-                    <input type="password" name="confirm password"
+                    <input type="password" name="confirm_password"
                            placeholder="Re-enter your password" required>
                 </div>
 
                 <button type="submit" class="log-button" name="verify">
-                    LOG IN
+                    UPDATE PASSWORD
                 </button>
             </form>
 

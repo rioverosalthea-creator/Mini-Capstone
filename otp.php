@@ -1,5 +1,28 @@
 <?php
 session_start();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $user_otp = trim($_POST['otp_code']);
+
+    // I-check kung tumutugma sa OTP na naka-save sa session
+    if (isset($_SESSION['otp']) && $user_otp == $_SESSION['otp']) {
+        // TAMA ANG OTP! I-mark na verified na ito sa session
+        $_SESSION['otp_verified'] = true;
+
+        // I-redirect ngayon papunta sa verify_otp.php para sa paggawa ng bagong password
+        echo "<script>
+                window.location.href = 'verify_otp.php';
+              </script>";
+        exit();
+    } else {
+        // MALI ANG OTP
+        echo "<script>
+                alert('Invalid OTP code! Please try again.');
+                window.location.href = 'otp.php';
+              </script>";
+        exit();
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +44,8 @@ session_start();
         <div class="log-content">
             <h2>Enter OTP</h2>
             <p>Enter the OTP that is sent to your email.</p>
-            <form action="verify_otp.php" method="POST">
+            
+            <form action="otp.php" method="POST">
                 <div class="log-group">
                     <label>OTP Code:</label>
                     <input type="text" name="otp_code" placeholder="Enter your OTP" required>
