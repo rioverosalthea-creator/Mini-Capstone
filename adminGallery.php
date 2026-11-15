@@ -54,7 +54,7 @@
                     <h3><i class="fa-solid fa-cloud-arrow-up"></i> Upload New Gallery Photo</h3>
                 </div>
                 <div class="admin-card-body">
-                    <form action="upload_process.php" method="POST" enctype="multipart/form-data">
+                    <form action="/Mini Capstone/admingallery1.php" method="POST" enctype="multipart/form-data">
                         
                         <div class="admin-form-group">
                             <label>Pick an image</label>
