@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Siguraduhing dumaan muna sa OTP verification bago makapunta dito[cite: 1]
 if (!isset($_SESSION['otp_verified']) || $_SESSION['otp_verified'] !== true) {
     echo "<script>
             alert('Unauthorized access! Please verify your OTP first.');
@@ -27,14 +26,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $email = $_SESSION['reset_email'];
+        // Ito ang user input (pwedeng username o email) na sinave natin galing forgot_password.php
+        $identifier = $_SESSION['reset_email'];
         
-        // ** PASSWORD HASHING DITO **
-        // Kino-convert ang plain text password sa secure hashed string
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         
-        $stmt = $conn->prepare("UPDATE users SET password = ? WHERE email = ?");
-        $stmt->bind_param("ss", $hashed_password, $email);
+        // ITT ANG BINAGO: Pwedeng mag-update kahit username o email ang ibinigay
+        $stmt = $conn->prepare("UPDATE users SET password = ? WHERE username = ? OR email = ?");
+        $stmt->bind_param("sss", $hashed_password, $identifier, $identifier);
 
         if ($stmt->execute()) {
             unset($_SESSION['otp']);
