@@ -1,44 +1,75 @@
 
 <?php
 session_start();
+require_once "db.php";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    header("Location: login.php");
+    exit();
+}
 
-    $username = trim($_POST['username'] ?? '');
-    $password = $_POST['password'] ?? '';
+$username = trim($_POST['username'] ?? '');
+$password = $_POST['password'] ?? '';
 
-    if ($username === 'admin123' && $password === 'admin321') {
+if ($username === '' || $password === '') {
+    echo "<script>
+        alert('Please enter your username and password.');
+        window.location.href = 'login.php';
+    </script>";
+    exit();
+}
 
-        $_SESSION['user_id'] = 999;
-        $_SESSION['username'] = 'Admin User';
-        $_SESSION['role'] = 'admin';
+$sql = "SELECT * FROM users
+        WHERE username = ? OR email = ?
+        LIMIT 1";
 
-        header("Location: admin_dashboard.php");
-        exit();
-    }
+$stmt = $conn->prepare($sql);
 
-    elseif (
-        isset($_SESSION['users'][$username]) &&
-        password_verify($password, $_SESSION['users'][$username]['password'])
-    ) {
+if (!$stmt) {
+    die("Database error: " . $conn->error);
+}
 
-        $resident = $_SESSION['users'][$username];
+$stmt->bind_param("ss", $username, $username);
+$stmt->execute();
 
-        $_SESSION['user_id'] = $resident['resident_number'];
-        $_SESSION['username'] = $resident['full_name'];
-        $_SESSION['role'] = 'resident';
-        $_SESSION['profile'] = $resident;
+$result = $stmt->get_result();
 
-        header("Location: index.php");
-        exit();
-    }
+if ($result->num_rows === 1) {
 
-    else {
+    $user = $result->fetch_assoc();
+
+    if (password_verify($password, $user['password'])) {
+
+        session_regenerate_id(true);
+
+        $_SESSION['user_id'] = $user['user_id'];
+        $_SESSION['role'] = $user['role'];
+        $_SESSION['profile'] = $user;
+
+        if ($user['role'] === 'admin') {
+            header("Location: admin_dashboard.php");
+            exit();
+        } else {
+            header("Location: Profile.php");
+            exit();
+        }
+
+    } else {
         echo "<script>
-            alert('Wrong username or password! Try again.');
+            alert('Incorrect username or password.');
             window.location.href = 'login.php';
         </script>";
         exit();
     }
+
+} else {
+    echo "<script>
+        alert('Incorrect username or password.');
+        window.location.href = 'login.php';
+    </script>";
+    exit();
 }
+
+$stmt->close();
+$conn->close();
 ?>

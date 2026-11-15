@@ -76,7 +76,7 @@
             </button>
             <button class="btn4">
                 <i class="fa-solid fa-images"></i>
-                <a href="#Gallery">Photo Gallery</a>
+                <a href="#Photo">Photo Gallery</a>
             </button>
         </div>
     </section>
@@ -129,7 +129,8 @@
 
             </div>
         </div>
-    <section id="Gallery">
+
+    <section id="Photo">
         <div class="ug-gallery-section-wrapper">
             <div class="ug-latest-container">
                 <div class="ug-header-content">

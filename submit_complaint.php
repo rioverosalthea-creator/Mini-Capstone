@@ -1,8 +1,12 @@
-
 <?php
 session_start();
+require_once "db.php";
 
-if (!isset($_SESSION['profile']) || !isset($_SESSION['role']) || $_SESSION['role'] !== 'resident') {
+if (
+    !isset($_SESSION['user_id']) ||
+    !isset($_SESSION['role']) ||
+    $_SESSION['role'] !== 'resident'
+) {
     header("Location: login.php");
     exit();
 }
@@ -12,61 +16,88 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     exit();
 }
 
-$requiredFields = [
-    'fullname',
-    'contact_number',
-    'address',
-    'respondent_name',
-    'respondent_address',
-    'complaint',
-    'incident_date',
-    'incident_time',
-    'location',
-    'description'
-];
+$fullname = trim($_POST['fullname'] ?? '');
+$contact_number = trim($_POST['contact_number'] ?? '');
+$address = trim($_POST['address'] ?? '');
+$respondent_name = trim($_POST['respondent_name'] ?? '');
+$respondent_address = trim($_POST['respondent_address'] ?? '');
+$complaint = trim($_POST['complaint'] ?? '');
+$incident_date = $_POST['incident_date'] ?? '';
+$incident_time = $_POST['incident_time'] ?? '';
+$location = trim($_POST['location'] ?? '');
+$description = trim($_POST['description'] ?? '');
 
-foreach ($requiredFields as $field) {
-    if (!isset($_POST[$field]) || trim($_POST[$field]) === '') {
-        echo "<script>
-            alert('Please complete all complaint fields.');
-            window.location.href = 'Complaint.php';
-        </script>";
-        exit();
-    }
+$user_id = $_SESSION['user_id'];
+
+// Validate required fields
+if (
+    $fullname === '' ||
+    $contact_number === '' ||
+    $address === '' ||
+    $respondent_name === '' ||
+    $complaint === '' ||
+    $incident_date === '' ||
+    $incident_time === '' ||
+    $location === '' ||
+    $description === ''
+) {
+    echo "<script>
+        alert('Please complete all required fields!');
+        window.location.href = 'Complaint.php';
+    </script>";
+    exit();
 }
 
-if (!isset($_SESSION['complaint_requests'])) {
-    $_SESSION['complaint_requests'] = [];
+$request_id = 'CMP-' . date('ymd') . random_int(100000, 999999);
+
+$sql = "INSERT INTO complaint_requests (
+    request_id,
+    user_id,
+    fullname,
+    contact_number,
+    address,
+    respondent_name,
+    respondent_address,
+    complaint,
+    incident_date,
+    incident_time,
+    location,
+    description
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+$stmt = $conn->prepare($sql);
+
+if (!$stmt) {
+    die("SQL preparation failed: " . $conn->error);
 }
 
-$request = [
-    'request_id' => 'CMP-' . str_pad(
-        count($_SESSION['complaint_requests']) + 1,
-        3,
-        '0',
-        STR_PAD_LEFT
-    ),
+$stmt->bind_param(
+    "sissssssssss",
+    $request_id,
+    $user_id,
+    $fullname,
+    $contact_number,
+    $address,
+    $respondent_name,
+    $respondent_address,
+    $complaint,
+    $incident_date,
+    $incident_time,
+    $location,
+    $description
+);
 
-    'fullname' => trim($_POST['fullname']),
-    'contact_number' => trim($_POST['contact_number']),
-    'address' => trim($_POST['address']),
-    'respondent_name' => trim($_POST['respondent_name']),
-    'respondent_address' => trim($_POST['respondent_address']),
-    'complaint' => trim($_POST['complaint']),
-    'incident_date' => $_POST['incident_date'],
-    'incident_time' => $_POST['incident_time'],
-    'location' => trim($_POST['location']),
-    'description' => trim($_POST['description']),
+if ($stmt->execute()) {
+    echo "<script>
+        alert('Complaint submitted successfully!');
+        window.location.href = 'Profile.php';
+    </script>";
+} else {
+    echo "Complaint submission failed: " .
+         htmlspecialchars($stmt->error);
+}
 
-    'request_status' => 'Pending',
-    'date_submitted' => date('Y-m-d')
-];
-
-$_SESSION['complaint_requests'][] = $request;
-
-echo "<script>
-    alert('Complaint submitted successfully!');
-    window.location.href = 'Complaint.php';
-</script>";
+$stmt->close();
+$conn->close();
 exit();
 ?>

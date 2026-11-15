@@ -1,14 +1,67 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['profile']) || !isset($_SESSION['role']) || $_SESSION['role'] !== 'resident') {
+if (
+    !isset($_SESSION['user_id']) ||
+    !isset($_SESSION['role']) ||
+    $_SESSION['role'] !== 'resident'
+) {
     header("Location: login.php");
     exit();
 }
 
-$profile = $_SESSION['profile'];
+require_once "db.php";
 
-$documentRequests = $_SESSION['document_requests'] ?? [];
+$user_id = $_SESSION['user_id'];
+$profile = $_SESSION['profile'] ?? [];
+
+// Get resident information from database
+$userSql = "SELECT * FROM users WHERE user_id = ?";
+$userStmt = $conn->prepare($userSql);
+$userStmt->bind_param("i", $user_id);
+$userStmt->execute();
+
+$userResult = $userStmt->get_result();
+$profile = $userResult->fetch_assoc() ?? [];
+
+$userStmt->close();
+
+// Get both clearance and complaint requests
+$documentRequests = [];
+
+$sql = "
+    SELECT
+        request_id,
+        'Barangay Clearance' AS document_type,
+        request_status,
+        date_submitted
+    FROM clearance_requests
+    WHERE user_id = ?
+
+    UNION ALL
+
+    SELECT
+        request_id,
+        'Complaint' AS document_type,
+        request_status,
+        date_submitted
+    FROM complaint_requests
+    WHERE user_id = ?
+
+    ORDER BY date_submitted DESC
+";
+
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("ii", $user_id, $user_id);
+$stmt->execute();
+
+$result = $stmt->get_result();
+
+while ($row = $result->fetch_assoc()) {
+    $documentRequests[] = $row;
+}
+
+$stmt->close();
 ?>
 
 <!DOCTYPE html>

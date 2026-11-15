@@ -117,20 +117,6 @@ $profile = $_SESSION['profile'];
                             <a class = "btntxt"href="Complaint.php">View Complaints</a>
                         </button>   
                     </div>
-                    <div class="service-item"><p>Certificates</p>
-                        <i class="fa-solid fa-file-lines custom-icon3"></i>
-                        <h5>Request official barangay certificates.</h5>
-                        <button class="btn-s">
-                            <a class = "btntxt" href="Certificates.php">Request Certificates</a>
-                        </button>
-                    </div>
-                    <div class="service-item"><p>Request</p>
-                        <i class="fa-solid fa-file-circle-question custom-icon4"></i>
-                        <h5>Request barangay services such as waste collection, and streetlight repairs.</h5>
-                        <button class="btn-s">
-                            <a class = "btntxt"href="Request.php">Request Services</a>
-                        </button>
-                    </div>
                 </div>
             </div>
     </section>

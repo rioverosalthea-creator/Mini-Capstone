@@ -1,8 +1,13 @@
 
 <?php
 session_start();
+require_once "db.php";
 
-if (!isset($_SESSION['profile']) || !isset($_SESSION['role']) || $_SESSION['role'] !== 'resident') {
+if (
+    !isset($_SESSION['user_id']) ||
+    !isset($_SESSION['role']) ||
+    $_SESSION['role'] !== 'resident'
+) {
     header("Location: login.php");
     exit();
 }
@@ -12,48 +17,79 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     exit();
 }
 
-if (!isset($_SESSION['clearance_requests'])) {
-    $_SESSION['clearance_requests'] = [];
+$fullname = trim($_POST['fullname'] ?? '');
+$birthdate = $_POST['birthdate'] ?? '';
+$sex = trim($_POST['sex'] ?? '');
+$status = trim($_POST['status'] ?? '');
+$contact_number = trim($_POST['contact_number'] ?? '');
+$address = trim($_POST['address'] ?? '');
+$purpose = trim($_POST['purpose'] ?? '');
+$claim_date = $_POST['claim_date'] ?? '';
+
+$user_id = $_SESSION['user_id'];
+
+if (
+    $fullname === '' ||
+    $birthdate === '' ||
+    $sex === '' ||
+    $status === '' ||
+    $contact_number === '' ||
+    $address === '' ||
+    $purpose === '' ||
+    $claim_date === ''
+) {
+    echo "<script>
+        alert('Please complete all required fields!');
+        window.location.href = 'BarangayClearance.php';
+    </script>";
+    exit();
 }
 
-$request = [
-    'request_id' => 'CLR-' . str_pad(
-        count($_SESSION['clearance_requests']) + 1,
-        3,
-        '0',
-        STR_PAD_LEFT
-    ),
+$request_id = 'CLR-' . date('ymd') . random_int(100000, 999999);
 
-    'fullname' => $_POST['fullname'] ?? '',
-    'birthdate' => $_POST['birthdate'] ?? '',
-    'sex' => $_POST['sex'] ?? '',
-    'status' => $_POST['status'] ?? '',
-    'contact_number' => $_POST['contact_number'] ?? '',
-    'address' => $_POST['address'] ?? '',
-    'purpose' => $_POST['purpose'] ?? '',
-    'claim_date' => $_POST['claim_date'] ?? '',
-    'document_type' => 'Barangay Clearance',
-    'request_status' => 'Pending',
-    'date_submitted' => date('Y-m-d')
-];
+$sql = "INSERT INTO clearance_requests (
+    request_id,
+    user_id,
+    fullname,
+    birthdate,
+    sex,
+    status,
+    contact_number,
+    address,
+    purpose,
+    claim_date
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-$_SESSION['clearance_requests'][] = $request;
+$stmt = $conn->prepare($sql);
 
-if (!isset($_SESSION['document_requests'])) {
-    $_SESSION['document_requests'] = [];
+if (!$stmt) {
+    die("SQL Error: " . $conn->error);
 }
 
-$_SESSION['document_requests'][] = [
-    'request_id' => $request['request_id'],
-    'document_type' => $request['document_type'],
-    'date_submitted' => $request['date_submitted'],
-    'request_status' => $request['request_status']
-];
+$stmt->bind_param(
+    "sissssssss",
+    $request_id,
+    $user_id,
+    $fullname,
+    $birthdate,
+    $sex,
+    $status,
+    $contact_number,
+    $address,
+    $purpose,
+    $claim_date
+);
 
-echo "<script>
-    alert('Your Barangay Clearance request has been submitted successfully!');
-    window.location.href = 'Profile.php';
-</script>";
+if ($stmt->execute()) {
+    echo "<script>
+        alert('Barangay Clearance request submitted successfully!');
+        window.location.href = 'Profile.php';
+    </script>";
+} else {
+    echo "Request submission failed: " . htmlspecialchars($stmt->error);
+}
 
+$stmt->close();
+$conn->close();
 exit();
 ?>

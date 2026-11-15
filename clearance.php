@@ -1,13 +1,35 @@
 <?php
 session_start();
+require_once "db.php";
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header("Location: login.php");
     exit();
 }
 
-$requests = $_SESSION['clearance_requests'] ?? [];
-$complaints = $_SESSION['complaint_requests'] ?? [];
+require_once "db.php";
+
+$requests = [];
+
+$sql = "SELECT * FROM clearance_requests ORDER BY date_submitted DESC";
+$result = $conn->query($sql);
+
+if ($result) {
+    while ($row = $result->fetch_assoc()) {
+        $requests[] = $row;
+    }
+}
+
+$complaints = [];
+
+$sql = "SELECT * FROM complaint_requests ORDER BY date_submitted DESC";
+$result = $conn->query($sql);
+
+if ($result) {
+    while ($row = $result->fetch_assoc()) {
+        $complaints[] = $row;
+    }
+}
 
 $totalRequests = count($requests);
 
@@ -450,6 +472,8 @@ foreach ($complaints as $complaint) {
         </div>
 
     </div>
+
+
 
 
     <script src="clearance.js"></script>
