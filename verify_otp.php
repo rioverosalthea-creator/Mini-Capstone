@@ -30,10 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $email = $_SESSION['reset_email'];
 
-    // Hash the new password
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    // Update password in the existing users table
     $stmt = $conn->prepare(
         "UPDATE users SET password = ? WHERE email = ?"
     );
