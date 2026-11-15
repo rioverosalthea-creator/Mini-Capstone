@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Siguraduhing dumaan muna sa OTP verification bago makapunta dito
+// Siguraduhing dumaan muna sa OTP verification bago makapunta dito[cite: 1]
 if (!isset($_SESSION['otp_verified']) || $_SESSION['otp_verified'] !== true) {
     echo "<script>
             alert('Unauthorized access! Please verify your OTP first.');
@@ -29,9 +29,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $email = $_SESSION['reset_email'];
         
+        // ** PASSWORD HASHING DITO **
+        // Kino-convert ang plain text password sa secure hashed string
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         
         $stmt = $conn->prepare("UPDATE users SET password = ? WHERE email = ?");
-        $stmt->bind_param("ss", $password, $email);
+        $stmt->bind_param("ss", $hashed_password, $email);
 
         if ($stmt->execute()) {
             unset($_SESSION['otp']);
@@ -61,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verify OTP Page</title>
+    <title>Create New Password</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
@@ -76,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="log-content">
             <h2>Create New Password</h2>
             
-            <form action="verify_otp.php" method="POST">
+            <form action="" method="POST">
                 <div class="log-group">
                     <label>Password</label>
                     <input type="password" name="password"
