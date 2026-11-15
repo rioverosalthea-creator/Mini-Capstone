@@ -38,7 +38,7 @@ if ($result->num_rows === 1) {
 
     $user = $result->fetch_assoc();
 
-    if (password_verify($password, $user['password'])) {
+    if ($password === $user['password']) {
 
         session_regenerate_id(true);
 

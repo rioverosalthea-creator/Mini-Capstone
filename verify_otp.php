@@ -21,8 +21,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               </script>";
         exit();
     } else {
-        // --- DATABASE CONNECTION & UPDATE ---
-        // Palitan ang 'barangay_db' at 'residents' kung iba ang pangalan sa XAMPP mo
         $conn = new mysqli("localhost", "root", "", "barangay_db");
 
         if ($conn->connect_error) {
@@ -31,12 +29,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $email = $_SESSION['reset_email'];
         
-        // UPDATE query para mapalitan ang password sa database
-        $stmt = $conn->prepare("UPDATE residents SET password = ? WHERE email = ?");
+        
+        $stmt = $conn->prepare("UPDATE users SET password = ? WHERE email = ?");
         $stmt->bind_param("ss", $password, $email);
 
         if ($stmt->execute()) {
-            // Linisin ang session para tapos na ang forgot password process
             unset($_SESSION['otp']);
             unset($_SESSION['reset_email']);
             unset($_SESSION['otp_verified']);
