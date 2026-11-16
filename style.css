@@ -3573,6 +3573,12 @@ tbody tr:hover {
 }
 
 @media screen and (max-width: 992px) {
+
+    .home h1 {
+        font-size: 30px !important;
+        margin-top: 100px !important;
+    }
+
     .navigation {
         padding: 10px 15px;
         height: auto;
@@ -3589,11 +3595,6 @@ tbody tr:hover {
 
     .navbar-clock {
         display: none; 
-    }
-
-    .home h1 {
-        font-size: 40px !important;
-        margin-top: 100px !important;
     }
 
     .home p {
@@ -3711,30 +3712,27 @@ tbody tr:hover {
 
     #Home {
         margin-top: 0 !important;
-        height: calc(100vh - 145px) !important;
-        padding-bottom: 80px !important;
+        height: auto !important;
+        min-height: calc(100svh - 145px);
+        padding: 30px 15px !important;
+        box-sizing: border-box;
     }
 
-    .home h1 {
-        font-size: 36px !important;
-        margin-top: 30px !important;
+     .home {
+        margin-bottom: 0 !important;
     }
 
-    .home p {
-        font-size: 15px !important;
-    }
 
     .button-container {
-        margin-top: 20px !important;
+        margin-top: 25px !important;
         display: flex !important;
-        flex-wrap: wrap !important;
         justify-content: center !important;
+        align-items: center !important;
+        transform: none !important;
     }
 
     .btn1, .btn2, .btn3, .btn4 {
-        margin-top: 10px !important;
-        padding: 12px 16px !important;
-        font-size: 14px !important;
+        transform: none !important;
     }
 
     .service-list,
@@ -3754,12 +3752,26 @@ tbody tr:hover {
         min-height: auto !important;
     }
 
-    #Announcement h2 {
-    font-size: clamp(45px, 6vw, 50px);
+    .announcement h2 {
+    font-size: clamp(35px, 4vw, 50px) !important;
     margin-bottom: 20px;
     padding-top: 50px;
     word-wrap: break-word;
 }
+
+    .services h2 {
+        font-size: clamp(35px, 4vw, 50px) !important;
+        margin-bottom: 20px;
+        padding-top: 50px;
+        word-wrap: break-word;
+    }
+
+    .hotlines-heading h1 {
+        font-size: clamp(35px, 4vw, 50px) !important;
+        margin-bottom: 20px;
+        padding-top: 50px;
+        word-wrap: break-word;
+    }
 
     .service-item, .mission, .vision, .geographic, .demographic, .development {
         height: auto !important;
