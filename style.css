@@ -606,10 +606,11 @@ html, body {
 .service-list { 
     margin: 0 auto 40px;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 15px;
     padding: 10px;
-    align-items: stretch;
+    align-items: center;
+
 }
 
 .service-item { 
@@ -617,7 +618,7 @@ html, body {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(62, 39, 35, 0.20);
     border: 1px solid #711818;
-    height: 350px;
+    height: auto;
     width: 100%;
     box-sizing: border-box;
     font-weight: bold;
@@ -993,8 +994,6 @@ html, body {
   color: #cbd5e1;
 }
 
-/* Start ng CSS ng Gallery */
-
 .ug-custom-modal-overlay {
   display: none;
   position: fixed;
@@ -1101,7 +1100,7 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.9); /* Mas madilim na background para naka-focus sa litrato */
+  background-color: rgba(0, 0, 0, 0.9);
   justify-content: center;
   align-items: center;
   z-index: 10000;
@@ -1153,9 +1152,6 @@ html, body {
 .ug-header-content h1 {
     margin-top: 50px;
 }
-
-/* End ng CSS ng Gallery */
-
 
 .summary-announcement {
     background: #e4f8e9;
@@ -2490,8 +2486,6 @@ html, body {
     color: #777;
 }
 
-/* Admin CSS */
-
 * {
     margin: 0;
     padding: 0;
@@ -3103,7 +3097,6 @@ body.login-body .signup-container {
     margin-top: 25px;
 }
 
-/* Admin-CLEARANCE CSS */
 * {
     margin: 0;
     padding: 0;
@@ -3391,3 +3384,574 @@ tbody tr:hover {
     display: flex;
 }
 
+.admin-form-group select,
+.admin-form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    background-color: #fff;
+    color: #1f2937;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-form-group select:focus,
+.admin-form-group textarea:focus {
+    outline: none;
+    border-color: #16a34a;
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15);
+}
+
+.admin-form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.ann-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.ann-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.ann-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.ann-card-img {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: #f3f4f6;
+}
+
+.ann-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ann-card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.ann-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.ann-badge {
+    background-color: #dcfce7;
+    color: #15803d;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.ann-date {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.ann-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.ann-text {
+    font-size: 14px;
+    color: #4b5563;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.ann-modal-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.ann-modal-item {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-left: 4px solid #16a34a;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.ann-modal-item h4 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #111827;
+    margin: 6px 0 8px;
+}
+
+.ann-modal-item p {
+    font-size: 14px;
+    color: #374151;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.ann-modal-img {
+    max-width: 100%;
+    max-height: 250px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-top: 8px;
+}
+
+#announcementModal .modal-card {
+    max-height: 85vh; 
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; 
+}
+
+#announcementModal .modal-body {
+    overflow-y: auto;   
+    max-height: calc(85vh - 140px);
+    padding-right: 10px;
+}
+
+.lay-out {
+    position: relative; 
+}
+
+.form-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 18px;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background-color: #f3f4f6;
+    color: #374151;
+    font-size: 24px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.form-close-btn:hover {
+    background-color: #ef4444;
+    color: #ffffff;
+    transform: scale(1.08);
+}
+
+@media screen and (max-width: 992px) {
+    .navigation {
+        padding: 10px 15px;
+        height: auto;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .nav-bar {
+        margin-left: 0;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    .navbar-clock {
+        display: none; 
+    }
+
+    .home h1 {
+        font-size: 40px !important;
+        margin-top: 100px !important;
+    }
+
+    .home p {
+        font-size: 16px !important;
+    }
+
+    .service-list {
+        grid-template-columns: 1fr !important; 
+    }
+
+    .about-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+    }
+
+    .footer-contact {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    .signup-grid, .profile-information, .details-grid, .edit-form-grid {
+        grid-template-columns: 1fr !important; 
+    }
+}
+
+@media screen and (max-width: 992px) {
+
+    .navigation {
+        height: auto !important;
+        padding: 10px 15px 0 15px !important;
+        flex-wrap: wrap !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+
+    .navigation img {
+        width: 42px !important;
+        height: 42px !important;
+        margin-right: 8px !important;
+    }
+
+    .nav-title, .nav-title2 {
+        font-size: 16px !important;
+        margin-left: 0 !important;
+    }
+
+    .nav-sub, .nav-sub2 {
+        display: block !important;
+        font-size: 11px !important;
+        margin-left: 0 !important;
+    }
+
+    .profile-dropdown, .profile-dropdown2 {
+        margin-left: auto !important;
+    }
+
+    .profile-btn {
+        font-size: 14px !important;
+        padding: 6px 10px !important;
+    }
+
+    .nav-bar {
+        order: 3 !important;
+        width: calc(100% + 30px) !important;
+        margin: 10px -15px 0 -15px !important;
+        padding: 8px 5px !important;
+        background-color: #650000 !important;
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        justify-content: space-around !important;
+        align-items: center !important;
+        gap: 2px !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .nav-link {
+        font-size: 11px !important;
+        padding: 6px 8px !important;
+        white-space: nowrap !important;
+    }
+
+    .welcome-slider {
+        margin-top: 105px !important;
+        height: 40px !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    .navbar-clock {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        background-color: #4a0000 !important;
+        padding: 0 10px !important;
+        height: 100% !important;
+        min-width: auto !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+        z-index: 2;
+    }
+
+    #currentDate {
+        font-size: 10px !important;
+        font-weight: normal !important;
+    }
+
+    #currentTime {
+        font-size: 11px !important;
+        font-weight: bold !important;
+    }
+
+    #Home {
+        margin-top: 0 !important;
+        height: calc(100vh - 145px) !important;
+        padding-bottom: 80px !important;
+    }
+
+    .home h1 {
+        font-size: 36px !important;
+        margin-top: 30px !important;
+    }
+
+    .home p {
+        font-size: 15px !important;
+    }
+
+    .button-container {
+        margin-top: 20px !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+    }
+
+    .btn1, .btn2, .btn3, .btn4 {
+        margin-top: 10px !important;
+        padding: 12px 16px !important;
+        font-size: 14px !important;
+    }
+
+    .service-list,
+    .kagawad-card,
+    .bac-container,
+    .footer-container,
+    .footer-contact,
+    .profile-information,
+    .signup-grid,
+    .details-grid,
+    .edit-form-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .services, #Announcement, #AboutBarangay {
+        height: auto !important;
+        min-height: auto !important;
+    }
+
+    #Announcement h2 {
+    font-size: clamp(45px, 6vw, 50px);
+    margin-bottom: 20px;
+    padding-top: 50px;
+    word-wrap: break-word;
+}
+
+    .service-item, .mission, .vision, .geographic, .demographic, .development {
+        height: auto !important;
+        min-height: 250px !important;
+    }
+
+    .kapitan-card, .sk-card, .kagawad-content, .bac-card, .hotline-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        min-height: 160px !important;
+    }
+
+    .mission, .vision, .geographic, .demographic, .development, 
+    .kapitan-card, .sk-card, .kagawad-content, .bac-card, 
+    .admin-card, .hotline-card, .profile-card, .settings-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        overflow-wrap: break-word !important;
+        word-wrap: break-word !important;
+    }
+
+    .mission, .vision, .geographic, .demographic, .development,
+    .service-item, .kapitan-card, .sk-card, .kagawad-content, .bac-card, .hotline-card,
+    .form-layout, .admin-card, .dashboard-card {
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important; 
+        overflow: visible !important; 
+        padding-bottom: 25px !important; 
+    }
+
+    
+    #AboutBarangay, .about-content {
+        height: auto !important;
+        min-height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 30px !important;
+        padding-bottom: 50px !important;
+    }
+
+.form-layout {
+    max-width: 650px !important;
+    width: 90% !important;
+    margin: 40px auto !important;
+    padding: 25px 30px !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-radius: 15px !important;
+    box-shadow: 0 5px 20px rgba(62, 39, 35, 0.20) !important;
+    box-sizing: border-box !important;
+    }
+
+    .form-group, 
+    .form-group2 {
+        margin-bottom: 12px !important;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea,
+    .form-group2 input,
+    .form-group2 select,
+    .form-group2 textarea {
+        width: 100% !important;
+        padding: 10px 12px !important;
+        font-size: 14px !important;
+        background: #FFFDFB !important;
+        color: black !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 6px !important;
+        box-sizing: border-box !important;
+    }
+    
+}
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 70px; 
+        overflow: hidden;
+    }
+    .main-content, .clearance-container {
+        margin-left: 70px !important;
+        width: calc(100% - 70px) !important;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .login-body {
+        padding: 20px 16px !important;
+    }
+
+    .log-content {
+        padding: 15px 20px 25px 20px !important;
+    }
+    html, body {
+        width: 100% !important;
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    body.dashboard-body {
+        display: block !important;
+        width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    .sidebar {
+        position: relative !important;
+        width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        border-right: none !important;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .main-content, .clearance-container {
+        margin-left: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;
+    }
+
+    .top-header {
+        padding: 15px !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .admin-profile-pill {
+        align-self: flex-end !important;
+        margin-top: -45px !important;
+    }
+
+    .dashboard-container, .dashboard-containers {
+        padding: 12px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;
+    }
+
+    .content-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .summary-cards {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: stretch !important;
+        gap: 10px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important; 
+    }
+
+    .summary-card {
+        flex: 1 1 0 !important;
+        width: 0 !important; 
+        min-width: 0 !important;
+        background: #FFFFFF !important;
+        padding: 15px 10px !important;
+        border-radius: 10px !important;
+        box-shadow: 0 3px 10px rgba(120, 25, 25, 0.08) !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+    }
+
+    .summary-card h2, 
+    .summary-card p {
+        overflow-wrap: break-word !important;
+        word-break: break-word !important;
+        margin: 0 !important;
+    }
+
+    .summary-card h2 {
+        font-size: clamp(16px, 2.5vw, 22px) !important;
+        margin-top: 8px !important;
+    }
+
+    .summary-card p {
+        font-size: clamp(11px, 1.8vw, 14px) !important;
+    }
+}

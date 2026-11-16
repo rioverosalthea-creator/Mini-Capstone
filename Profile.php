@@ -15,7 +15,6 @@ require_once "db.php";
 $user_id = $_SESSION['user_id'];
 $profile = $_SESSION['profile'] ?? [];
 
-// Get resident information from database
 $userSql = "SELECT * FROM users WHERE user_id = ?";
 $userStmt = $conn->prepare($userSql);
 $userStmt->bind_param("i", $user_id);
@@ -26,7 +25,6 @@ $profile = $userResult->fetch_assoc() ?? [];
 
 $userStmt->close();
 
-// Get both clearance and complaint requests
 $documentRequests = [];
 
 $sql = "
@@ -99,7 +97,7 @@ $stmt->close();
         </div>
 
         <div class="profile-summary-info">
-            <h2><?= htmlspecialchars($profile['full_name'] ?? '') ?></h2>
+            <h2><?= htmlspecialchars($profile['fullname'] ?? '') ?></h2>
             <span class="resident-badge">Barangay Resident</span>
 
             <div class="profile-meta">
@@ -114,12 +112,6 @@ $stmt->close();
                 </span>
             </div>
         </div>
-
-        <button type="button" class="edit-profile-btn"
-                onclick="openEditProfile()">
-            <i class="fas fa-edit"></i>
-            Edit Profile
-        </button>
 
     </section>
 
@@ -138,7 +130,7 @@ $stmt->close();
 
                 <div class="information-item">
                     <label>Full Name</label>
-                    <p><?= htmlspecialchars($profile['full_name'] ?? '') ?></p>
+                    <p><?= htmlspecialchars($profile['fullname'] ?? '') ?></p>
                 </div>
 
                 <div class="information-item">

@@ -12,13 +12,15 @@
     <section id="Home-BC">
         <div class="home-BC">
             <img src="pitogobg.jpg" alt="BarangayBg" class="bg-image-BC">
-
+        </div>
     </section>
 
     <section id="">
         <div class="form-layout">
             
             <form class="lay-out" action="submit_clearance.php" method="POST">
+                <button type="button" class="form-close-btn" onclick="exitClearanceForm()" title="Close">&times;</button>
+
                 <h2>BARANGAY CLEARANCE</h2>
                 <p>Request Clearance Form</p>
 
@@ -79,5 +81,15 @@
 
         </div>
     </section>
+
+    <script>
+        function exitClearanceForm() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = 'index.php#services';
+            }
+        }
+    </script>
 </body>
 </html>

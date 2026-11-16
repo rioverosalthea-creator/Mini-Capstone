@@ -38,7 +38,6 @@ if (!isset($_SESSION['user_id']) ||
         <ul class="sidebar-menu">
             <li><a href="admin_dashboard.php" class="active"><i class="fa-solid fa-house"></i> Dashboard</a></li>
             <li><a href="clearance.php"><i class="fa-solid fa-file-lines"></i> Documents</a></li>
-            <li><a href="admin_announcements.php"><i class="fa-solid fa-bullhorn"></i> Announcements</a></li>
             <li><a href="login.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
         </ul>
     </aside>
@@ -69,24 +68,24 @@ if (!isset($_SESSION['user_id']) ||
                     </div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-icon-box"><i class="fa-solid fa-file-lines"></i></div>
+                    <div class="stat-icon-box"><i class="fa-solid fa-house"></i></div>
                     <div class="stat-details">
-                        <h3></h3>
-                        <p>Pending Clearances</p>
+                        <h3>120</h3>
+                        <p>Household</p>
                     </div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-icon-box"><i class="fa-solid fa-bullhorn"></i></div>
+                    <div class="stat-icon-box"><i class="fa-solid fa-ruler-combined"></i></div>
                     <div class="stat-details">
-                        <h3></h3>
-                        <p>Announcements</p>
+                        <h3>11.892 Hectares</h3>
+                        <p>Area</p>
                     </div>
                 </div>
-                <div class="stat-box highlight-box">
-                    <div class="stat-icon-box"><i class="fa-solid fa-star"></i></div>
+                <div class="stat-box">
+                    <div class="stat-icon-box"><i class="fa-solid fa-people-roof"></i></div>
                     <div class="stat-details">
-                        <h3></h3>
-                        <p>System Rating</p>
+                        <h3>147</h3>
+                        <p>Families</p>
                     </div>
                 </div>
             </div>
@@ -95,37 +94,29 @@ if (!isset($_SESSION['user_id']) ||
 
                 <div class="dashboard-card left-card">
                     <div class="card-header-flex">
-                        <h3>Recent Resident Activities</h3>
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                        <h3>Demographic Profile</h3>
                     </div>
                     <div class="activity-list">
                         <div class="activity-item">
                             <div class="act-avatar"><i class="fa-solid fa-user"></i></div>
                             <div class="act-info">
-                                <h4></h4>
+                                <h4>Male</h4>
                                 <p></p>
                             </div>
-                            <span class="act-stat success"></span>
+                            <span class="act-stat success">245</span>
                         </div>
                         <div class="activity-item">
                             <div class="act-avatar"><i class="fa-solid fa-user"></i></div>
                             <div class="act-info">
-                                <h4></h4>
+                                <h4>Female</h4>
                                 <p></p>
                             </div>
-                            <span class="act-stat pending"></span>
+                            <span class="act-stat pending">246</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="right-column-grid">
-                    <div class="dashboard-card small-card">
-                        <h4>Total Clearances Issued</h4>
-                        <div class="card-metric-trend">
-                            <h2></h2>
-                            <span class="trend-up"><i class="fa-solid fa-arrow-up"></i> </span>
-                        </div>
-                    </div>
                     <div class="dashboard-card small-card green-bg">
                         <h4>Monthly Income Status</h4>
                         <div class="card-metric-trend white-text">
@@ -151,17 +142,46 @@ if (!isset($_SESSION['user_id']) ||
                             <input type="file" name="gallery_image" accept="image/*" required>
                         </div>
 
-                        <div class="admin-form-group">
-                            <label>Enter your caption</label>
-                            <input type="text" name="caption" placeholder="Ex. Barangay Clean-Up Drive 2026" required>
-                        </div>
-
                         <button type="submit" class="action-btn">
                             <i class="fa-solid fa-upload"></i> Upload in Gallery
                         </button>
                     </form>
                 </div>
             </div>
+
+            <div class="admin-card">
+    <div class="admin-card-heading">
+        <h3><i class="fa-solid fa-bullhorn"></i> Post New Announcement</h3>
+    </div>
+    <div class="admin-card-body">
+        <form action="announcement_process.php" method="POST" enctype="multipart/form-data">
+            
+            <div class="admin-form-group">
+                <label>Announcement Title</label>
+                <input type="text" name="title" placeholder="Ex. Free Medical & Dental Mission" required>
+            </div>
+
+            <div class="admin-form-group">
+                <label>Category</label>
+                <select name="category" required>
+                    <option value="General">General Advisory</option>
+                    <option value="Event">Community Event</option>
+                    <option value="Health">Health & Sanitation</option>
+                    <option value="Emergency">Emergency / Weather Alert</option>
+                </select>
+            </div>
+
+            <div class="admin-form-group">
+                <label>Details / Description</label>
+                <textarea name="content" rows="4" placeholder="Add details..." required></textarea>
+            </div>
+
+            <button type="submit" class="action-btn">
+                <i class="fa-solid fa-paper-plane"></i> Publish Announcement
+            </button>
+        </form>
+    </div>
+</div>
 
         </div>
 

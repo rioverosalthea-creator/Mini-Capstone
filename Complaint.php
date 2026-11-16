@@ -6,18 +6,20 @@
     <title>Barangay Complaint</title>
     <link rel="stylesheet" href="style.css?v=1.1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
 </head>
 <body>
     
     <section id="Home-BC">
         <div class="home-BC">
             <img src="pitogobg.jpg" alt="BarangayBg" class="bg-image-BC">
-
+        </div>
     </section>
 
     <section id="">
         <div class="form-layout">
             <form class="lay-out" action="submit_complaint.php" method="POST">
+                <button type="button" class="form-close-btn" onclick="exitComplaintForm()" title="Close">&times;</button>
                 <h2>BARANGAY COMPLAINT</h2>
                 <p>Complaint Form</p>
 
@@ -63,8 +65,20 @@
                     <textarea id="description" name="description" required></textarea>
                 </div>
 
-                <button type="submit" class="submit-button">Submit</button>  
+                <button type="submit" class="submit-button">Submit</button>
+            </form> 
+        </div> 
     </section>
+
+    <script>
+        function exitComplaintForm() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = 'index.php#services';
+            }
+        }
+    </script>
 
 </body>
 </html>

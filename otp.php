@@ -4,13 +4,9 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user_otp = trim($_POST['otp_code']);
 
-    // I-check kung tumutugma sa OTP na naka-save sa session
     if (isset($_SESSION['otp']) && $user_otp == $_SESSION['otp']) {
-        // TAMA ANG OTP! I-mark na verified na ito sa session
         $_SESSION['otp_verified'] = true;
 
-        // I-redirect ngayon papunta sa verify_otp.php para sa paggawa ng bagong password
-        echo "<script>
                 window.location.href = 'verify_otp.php';
               </script>";
         exit();
@@ -24,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

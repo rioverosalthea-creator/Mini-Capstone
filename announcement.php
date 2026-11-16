@@ -1,4 +1,17 @@
- <!DOCTYPE html>
+<?php
+include 'db.php'; 
+
+$announcements = [];
+$annResult = $conn->query("SELECT * FROM announcements ORDER BY posted_at DESC");
+if ($annResult) {
+    while ($row = $annResult->fetch_assoc()) {
+        $row['formatted_date'] = date('F j, Y • g:i A', strtotime($row['posted_at']));
+        $announcements[] = $row;
+    }
+}
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +19,6 @@
     <title>Announcements</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
@@ -15,55 +27,53 @@
 <?php //include 'navbar.php'; ?>
 
     <section class="navigation">
+        <img src="logo.png" alt="Logo">
+        <div class="navtxt">
+            <div class="nav-title">Barangay Pag-asa</div>
+            <div class="nav-sub">Pitogo, Quezon</div>
+        </div>
 
-    <img src="logo.png" alt="Logo">
+        <ul class="nav-bar">
+            <li><a href="index.php" class="nav-link">Home</a></li>
+            <li><a href="AboutUs.php" class="nav-link">About Us</a></li>
+            <li><a href="index.php#services" class="nav-link">Services</a></li>
+            <li><a href="announcement.php" class="nav-link">Announcement</a></li>
+            <li><a href="official.php" class="nav-link">Official</a></li>
+        </ul>
 
-    <div class="navtxt">
-        <div class="nav-title">Barangay Pag-asa</div>
-        <div class="nav-sub">Pitogo, Quezon</div>
-    </div>
+        <div class="navbar-clock">
+            <div id="currentTime"></div>
+            <div id="currentDate"></div>
+        </div>
 
-    <ul class="nav-bar">
-        <li><a href="index.php" class="nav-link">Home</a></li>
-        <li><a href="AboutUs.php" class="nav-link">About Us</a></li>
-        <li><a href="index.php#services" class="nav-link">Services</a></li>
-        <li><a href="announcement.php" class="nav-link">Announcement</a></li>
-        <li><a href="official.php" class="nav-link">Official</a></li>
-    </ul>
+        <div class="profile-dropdown">
+            <button type="button" class="profile-btn" onclick="toggleProfile()">
+                <i class="fas fa-user-circle"></i>
+                Profile
+                <i class="fas fa-chevron-down"></i>
+            </button>
 
-    <div class="navbar-clock">
-        <div id="currentTime"></div>
-        <div id="currentDate"></div>
-    </div>
+            <div class="dropdown-menu" id="profileMenu">
+                <a href="Profile.php">My Profile</a>
+                <a href="AccountSetting.php">Account Settings</a>
+                <hr>
+                <a href="login.php" class="logout">Logout</a>
+            </div>
+        </div>
+    </section>
 
-    <div class="profile-dropdown">
-        <button type="button" class="profile-btn" onclick="toggleProfile()">
-            <i class="fas fa-user-circle"></i>
-            Profile
-            <i class="fas fa-chevron-down"></i>
-        </button>
-
-        <div class="dropdown-menu" id="profileMenu">
-            <a href="Profile.php">My Profile</a>
-            <a href="AccountSetting.php">Account Settings</a>
-            <hr>
-            <a href="login.php" class="logout">Logout</a>
+    <div class="welcome-slider">
+        <div class="welcome-track">
+            <span>WELCOME TO BARANGAY PAG-ASA</span>
+            <span class="welcome-dot">●</span>
+            <span>YOUR TRUSTED COMMUNITY HUB FOR INFORMATION AND SERVICES</span>
+            <span class="welcome-dot">●</span>
+            <span>WELCOME TO BARANGAY PAG-ASA</span>
+            <span class="welcome-dot">●</span>
         </div>
     </div>
-</section>
-
-<div class="welcome-slider">
-    <div class="welcome-track">
-        <span>WELCOME TO BARANGAY PAG-ASA</span>
-        <span class="welcome-dot">●</span>
-        <span>YOUR TRUSTED COMMUNITY HUB FOR INFORMATION AND SERVICES</span>
-        <span class="welcome-dot">●</span>
-        <span>WELCOME TO BARANGAY PAG-ASA</span>
-        <span class="welcome-dot">●</span>
-    </div>
-</div>
  
- <section id="Home">
+    <section id="Home">
         <div class="home">
             <img src="pitogobg.jpg" alt="BarangayBg" class="bg-image">
             <h1>Announcements</h1>
@@ -82,49 +92,81 @@
     </section>
 
     <section id="Announcement2">
-        <div class ="Latest">
+        <div class="Latest">
             <div class="announcement2">
                 <h1> Latest Announcements</h1>
                 <div class="heading-line"></div>
                 <p>Stay updated with the latest news and announcements from Barangay Pag-asa.</p>
             </div>
 
-            <div class="announcements-filler">
-                <i class="fa-solid fa-inbox inboxicon"></i>
-                <p>No announcements available at this time.</p>
-            </div>
+            <!-- 2. ISISINGIT DITO ANG LATEST ANNOUNCEMENTS (Top 3) -->
+            <?php if (!empty($announcements)): ?>
+                <div class="ann-cards-grid">
+                    <?php foreach (array_slice($announcements, 0, 3) as $ann): ?>
+                        <div class="ann-card">
+                            <?php if (!empty($ann['image_path'])): ?>
+                                <div class="ann-card-img">
+                                    <img src="<?php echo htmlspecialchars($ann['image_path']); ?>" alt="Announcement Poster">
+                                </div>
+                            <?php endif; ?>
+                            <div class="ann-card-body">
+                                <div class="ann-meta">
+                                    <span class="ann-badge"><?php echo htmlspecialchars($ann['category']); ?></span>
+                                    <span class="ann-date"><i class="fa-regular fa-clock"></i> <?php echo htmlspecialchars($ann['posted_at']); ?></span>
+                                </div>
+                                <h3 class="ann-title"><?php echo htmlspecialchars($ann['title']); ?></h3>
+                                <p class="ann-text"><?php echo nl2br(htmlspecialchars($ann['content'])); ?></p>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php else: ?>
+                <div class="announcements-filler">
+                    <i class="fa-solid fa-inbox inboxicon"></i>
+                    <p>No announcements available at this time.</p>
+                </div>
+            <?php endif; ?>
+
             <div class="button-announcement">
                 <button class="btn6" onclick="openGalleryModal()">
                     <span class="btntxt">View All Announcements</span>
                 </button>
             </div>
         </div>
+
         <div id="announcementModal" class="modal-overlay1">
             <div class="modal-card">
-            
                 <div class="modal-header">
                     <div class="header-title">
-                    <i class="fa-solid fa-bullhorn"></i>
-                    <span>All Announcements</span>
+                        <i class="fa-solid fa-bullhorn"></i>
+                        <span>All Announcements</span>
                     </div>
                     <button class="close-btn" onclick="closeGalleryModal()">&times;</button>
                 </div>
 
-                <div class="modal-filter-bar">
-                    <div class="search-box">
-                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                    <input type="text" placeholder="Search announcements...">
-                    </div>
-                    <select class="category-select">
-                    <option value="all">All Categories</option>
-                    </select>
-                </div>
-
                 <div class="modal-body">
-                    <div class="empty-state">
-                    <i class="fa-solid fa-inbox modal-inbox-icon"></i>
-                    <p>No announcements available.</p>
-                    </div>
+                    <?php if (!empty($announcements)): ?>
+                        <div class="ann-modal-list">
+                            <?php foreach ($announcements as $ann): ?>
+                                <div class="ann-modal-item">
+                                    <div class="ann-meta">
+                                        <span class="ann-badge"><?php echo htmlspecialchars($ann['category']); ?></span>
+                                        <span class="ann-date"><?php echo htmlspecialchars($ann['posted_at']); ?></span>
+                                    </div>
+                                    <h4><?php echo htmlspecialchars($ann['title']); ?></h4>
+                                    <p><?php echo nl2br(htmlspecialchars($ann['content'])); ?></p>
+                                    <?php if (!empty($ann['image_path'])): ?>
+                                        <img src="<?php echo htmlspecialchars($ann['image_path']); ?>" alt="Poster" class="ann-modal-img">
+                                    <?php endif; ?>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php else: ?>
+                        <div class="empty-state">
+                            <i class="fa-solid fa-inbox modal-inbox-icon"></i>
+                            <p>No announcements available.</p>
+                        </div>
+                    <?php endif; ?>
                 </div>
 
             </div>
@@ -159,34 +201,27 @@
                     <div class="ug-custom-modal-body">
                         <p>(Click to view full photo)</p>
                         <div class="ug-grid-container">
-                            <div class="ug-item-card">
-                                <img src="pitogobg.jpg" alt="Gallery Image 1" onclick="previewUgImage(this)">
-                            </div>
-                            <div class="ug-item-card">
-                                <img src="logo.png" alt="Gallery Image 2" onclick="previewUgImage(this)">
-                            </div>
-                            <div class="ug-item-card">
-                                <img src="photogallery.jpg" alt="Gallery Image 3" onclick="previewUgImage(this)">
-                            </div>
-                            <div class="ug-item-card">
-                                <img src="photogallery2.jpg" alt="Gallery Image 4" onclick="previewUgImage(this)">
-                            </div>
-                            <div class="ug-item-card">
-                                <img src="photogallery3.jpg" alt="Gallery Image 5" onclick="previewUgImage(this)">
-                            </div>
-                            <div class="ug-item-card">
-                                <img src="photogallery4.jpg" alt="Gallery Image 6" onclick="previewUgImage(this)">
-                            </div>
-                            <div class="ug-item-card">
-                                <img src="photogallery5.jpg" alt="Gallery Image 7" onclick="previewUgImage(this)">
-                            </div>
-                            <div class="ug-item-card">
-                                <img src="photogallery6.jpg" alt="Gallery Image 8" onclick="previewUgImage(this)">
-                            </div>
+                            <?php
+                            $result = $conn->query("SELECT * FROM gallery_photos ORDER BY id DESC");
+                            
+                            if ($result && $result->num_rows > 0):
+                                while ($row = $result->fetch_assoc()):
+                            ?>
+                                <div class="ug-item-card">
+                                    <img src="<?php echo htmlspecialchars($row['image_path']); ?>" 
+                                        onclick="previewUgImage(this)">
+                                </div>
+                            <?php 
+                                endwhile;
+                            else:
+                            ?>
+                                <p style="grid-column: 1 / -1; text-align: center; color: #666;">No photos uploaded yet.</p>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div id="ugPreviewModal" class="ug-preview-overlay" onclick="closeUgPreview()">
                 <div class="ug-preview-card" onclick="event.stopPropagation()">
                     <button class="ug-preview-close-btn" onclick="closeUgPreview()">&times;</button>
@@ -261,7 +296,7 @@
 
             <div>
                 <h4>Email</h4>
-                <a href="mailto: lgu.pitogoquezon@yahoo.com"> lgu.pitogoquezon@yahoo.com</a></p>
+                <a href="mailto: lgu.pitogoquezon@yahoo.com"> lgu.pitogoquezon@yahoo.com</a>
             </div>
         </div>
 

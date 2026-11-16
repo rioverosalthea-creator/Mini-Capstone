@@ -117,12 +117,6 @@ foreach ($complaints as $complaint) {
             </li>
 
             <li>
-                <a href="admin_announcements.php">
-                    <i class="fa-solid fa-bullhorn"></i> Announcements
-                </a>
-            </li>
-
-            <li>
                 <a href="login.php">
                     <i class="fa-solid fa-right-from-bracket"></i> Logout
                 </a>

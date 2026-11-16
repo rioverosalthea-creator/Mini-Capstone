@@ -1,6 +1,6 @@
-
 <?php
 session_start();
+require_once "db.php"; 
 
 if (
     !isset($_SESSION['profile']) ||
@@ -16,12 +16,23 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     exit();
 }
 
-$username = $_SESSION['profile']['username'];
+$user_id = $_SESSION['profile']['user_id'] ?? null;
+$username = $_SESSION['profile']['username'] ?? null;
 
-unset($_SESSION['users'][$username]);
+if (!$user_id && !$username) {
+    die("Error: User not found in session.");
+}
+
+$sql = "DELETE FROM users WHERE user_id = ? OR username = ?";
+$stmt = $conn->prepare($sql);
+
+if ($stmt) {
+    $stmt->bind_param("is", $user_id, $username);
+    $stmt->execute();
+    $stmt->close();
+}
 
 $_SESSION = [];
-
 session_destroy();
 
 echo "<script>
