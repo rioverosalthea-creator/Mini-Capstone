@@ -7,11 +7,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_SESSION['otp']) && $user_otp == $_SESSION['otp']) {
         $_SESSION['otp_verified'] = true;
 
+        echo "<script>
                 window.location.href = 'verify_otp.php';
               </script>";
         exit();
     } else {
-        // MALI ANG OTP
         echo "<script>
                 alert('Invalid OTP code! Please try again.');
                 window.location.href = 'otp.php';

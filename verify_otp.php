@@ -26,12 +26,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die("Connection failed: " . $conn->connect_error);
         }
 
-        // Ito ang user input (pwedeng username o email) na sinave natin galing forgot_password.php
         $identifier = $_SESSION['reset_email'];
         
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         
-        // ITT ANG BINAGO: Pwedeng mag-update kahit username o email ang ibinigay
         $stmt = $conn->prepare("UPDATE users SET password = ? WHERE username = ? OR email = ?");
         $stmt->bind_param("sss", $hashed_password, $identifier, $identifier);
 
