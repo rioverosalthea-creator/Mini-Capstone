@@ -98,8 +98,6 @@ if ($annResult) {
                 <div class="heading-line"></div>
                 <p>Stay updated with the latest news and announcements from Barangay Pag-asa.</p>
             </div>
-
-            <!-- 2. ISISINGIT DITO ANG LATEST ANNOUNCEMENTS (Top 3) -->
             <?php if (!empty($announcements)): ?>
                 <div class="ann-cards-grid">
                     <?php foreach (array_slice($announcements, 0, 3) as $ann): ?>
@@ -155,9 +153,6 @@ if ($annResult) {
                                     </div>
                                     <h4><?php echo htmlspecialchars($ann['title']); ?></h4>
                                     <p><?php echo nl2br(htmlspecialchars($ann['content'])); ?></p>
-                                    <?php if (!empty($ann['image_path'])): ?>
-                                        <img src="<?php echo htmlspecialchars($ann['image_path']); ?>" alt="Poster" class="ann-modal-img">
-                                    <?php endif; ?>
                                 </div>
                             <?php endforeach; ?>
                         </div>

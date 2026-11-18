@@ -875,17 +875,18 @@ html, body {
     gap: 20px; 
     justify-content: center;
 }
+
 .modal-overlay1 {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
 }
 
 .modal-overlay1.active {
@@ -893,22 +894,24 @@ html, body {
 }
 
 .modal-card {
-  background: #ffffff;
-  width: 90%;
-  max-width: 650px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  font-family: Arial, sans-serif;
+    background: #fff;
+    width: 90%;
+    max-width: 600px;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .modal-header {
-  background-color: #681111;
-  color: #ffffff;
-  padding: 16px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: #800000;
+    color: #fff;
+    flex-shrink: 0;
 }
 
 .header-title {
@@ -976,10 +979,10 @@ html, body {
 }
 
 .modal-body {
-  padding: 60px 20px;
-  text-align: center;
+    padding: 60px 20px 20px 20px !important; 
+    overflow-y: auto;
+    flex-grow: 1;
 }
-
 .empty-state {
   display: flex;
   flex-direction: column;
@@ -3497,7 +3500,8 @@ tbody tr:hover {
 .ann-modal-list {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 15px;
+    margin-top: 5px; 
 }
 
 .ann-modal-item {
@@ -3505,7 +3509,7 @@ tbody tr:hover {
     border: 1px solid #e5e7eb;
     border-left: 4px solid #16a34a;
     border-radius: 8px;
-    padding: 16px;
+    padding: 10px;
 }
 
 .ann-modal-item h4 {
@@ -3522,13 +3526,6 @@ tbody tr:hover {
     margin-bottom: 10px;
 }
 
-.ann-modal-img {
-    max-width: 100%;
-    max-height: 250px;
-    border-radius: 8px;
-    object-fit: cover;
-    margin-top: 8px;
-}
 
 #announcementModal .modal-card {
     max-height: 85vh; 
@@ -3967,3 +3964,187 @@ tbody tr:hover {
         font-size: clamp(11px, 1.8vw, 14px) !important;
     }
 }
+
+.modal-overlay1 {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99999;
+    pointer-events: auto;
+}
+
+.modal-overlay1.active {
+    display: flex;
+}
+
+.modal-card {
+    background: #fff;
+    width: 90%;
+    max-width: 600px;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    z-index: 100000;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: #800000;
+    color: #fff;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 100001;
+}
+
+.header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.close-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    line-height: 1;
+    transition: opacity 0.2s ease;
+}
+
+.close-btn:hover {
+    opacity: 0.7;
+}
+
+.modal-body {
+    padding: 40px 20px 20px 20px; 
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.ann-modal-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px; 
+}
+
+.ann-modal-item {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.ann-modal-item h4 {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 16px;
+}
+
+.ann-modal-item p {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.ann-modal-img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #777;
+}
+
+.modal-inbox-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media screen and (max-width: 768px) {
+    .modal-overlay1 {
+        padding: 10px; 
+    }
+
+    .modal-card {
+        background-color: #ffffff !important;
+        width: 100% !important;
+        max-width: 700px !important;
+        height: 85vh !important;
+        max-height: 650px !important;
+        border-radius: 10px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        z-index: 9999 !important;
+        overflow: hidden !important;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.5) !important;
+    }
+
+    .modal-header {
+        background-color: #830000 !important;
+        color: white !important;
+        padding: 15px 20px !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        flex-shrink: 0 !important;
+        width: 100% !important;
+        z-index: 10 !important;
+    }
+
+    .header-title {
+        font-size: 16px;
+    }
+
+    .modal-body {
+        background-color: #f9f9f9 !important;
+        padding: 15px 20px 20px 20px !important; 
+        overflow-y: auto !important;
+        flex-grow: 1 !important;
+        width: 100% !important;
+    }
+
+    .ann-modal-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    padding-top: 10px !important; 
+}
+
+    .ann-modal-list .ann-modal-item:first-child {
+    margin-top: 5px !important;
+}
+}
+
